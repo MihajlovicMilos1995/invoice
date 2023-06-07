@@ -1,0 +1,33 @@
+.invoice-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-information-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.company-partner-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.company-information-container,
+.partner-information-container {
+  flex-basis: 48%;
+}
+
+.table-container {
+  margin-top: 20px;
+}
+
+.additional-information-container {
+  margin-top: 20px;
+}
+.custom-modal .ant-modal-body {
+  width: 1000px;
+  height: 600px;
+}

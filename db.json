@@ -1,0 +1,109 @@
+{
+  "companies": [
+    {
+      "id": 1,
+      "name": "ABC Corporation",
+      "director": "John Smith",
+      "pib": "123456789",
+      "email": "info@abccorp.com",
+      "phone": "+1 (123) 456-7890",
+      "address": "123 Main Street",
+      "city": "City, Country",
+      "mb": "987654321",
+      "tekuci_racun": "1234567890",
+      "sifra_delatnosti": 2
+    },
+    {
+      "id": 2,
+      "name": "XYZ Ltd.",
+      "director": "Jane Doe",
+      "pib": "987654321",
+      "email": "info@xyzltd.com",
+      "phone": "+1 (987) 654-3210",
+      "address": "456 Elm Street",
+      "city": "City, Country",
+      "mb": "123456789",
+      "tekuci_racun": "0987654321",
+      "sifra_delatnosti": 2
+    },
+    {
+      "id": 3,
+      "name": "123 Industries",
+      "director": "Mike Johnson",
+      "pib": "543216789",
+      "email": "info@123industries.com",
+      "phone": "+1 (555) 123-4567",
+      "address": "789 Oak Avenue",
+      "city": "City, Country",
+      "mb": "987654123",
+      "tekuci_racun": "9876543210",
+      "sifra_delatnosti": 2
+    },
+    {
+      "name": "asd",
+      "director": "asd",
+      "pib": "asd",
+      "email": "asd",
+      "phone": "1",
+      "address": "asd",
+      "mb": "asd",
+      "tekuci_racun": "asd",
+      "id": 4,
+      "sifra_delatnosti": 2
+    }
+  ],
+  "partners": [
+    {
+      "id": 1,
+      "name": "Partner A",
+      "director": "Alex Anderson",
+      "pib": "111111111",
+      "email": "partnera@example.com",
+      "phone": "+1 (111) 111-1111",
+      "address": "111 Partner Street",
+      "city": "City, Country",
+      "mb": "111111111",
+      "tekuci_racun": "1111111111",
+      "sifra_delatnosti": 2
+    },
+    {
+      "id": 2,
+      "name": "Partner B",
+      "director": "Benjamin Baker",
+      "pib": "222222222",
+      "email": "partnerb@example.com",
+      "phone": "+1 (222) 222-2222",
+      "address": "222 Partner Street",
+      "city": "City, Country",
+      "mb": "222222222",
+      "tekuci_racun": "2222222222",
+      "sifra_delatnosti": 2
+    },
+    {
+      "id": 3,
+      "name": "Partner C",
+      "director": "Chris Carter",
+      "pib": "333333333",
+      "email": "partnerc@example.com",
+      "phone": "+1 (333) 333-3333",
+      "address": "333 Partner Street",
+      "city": "City, Country",
+      "mb": "333333333",
+      "tekuci_racun": "3333333333",
+      "sifra_delatnosti": 2
+    },
+    {
+      "name": "asd",
+      "director": "1",
+      "pib": "asd",
+      "email": "asd",
+      "phone": "asd",
+      "address": "asd",
+      "mb": "asd",
+      "tekuci_racun": "asd",
+      "city": "asd",
+      "id": 4,
+      "sifra_delatnosti": 2
+    }
+  ]
+}

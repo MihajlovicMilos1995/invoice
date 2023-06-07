@@ -1,0 +1,14 @@
+.invoice-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-partner-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.company-information-container,
+.partner-information-container {
+  flex-basis: 48%; /* Adjust the value as needed */
+}
