@@ -1,31 +1,19 @@
 .container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.racun-information-container,
-.racun-date-information-container {
-  flex: 1;
-  margin: 15px;
-  border: 1px solid black;
-  border-radius: 22px;
-  padding: 10px;
-}
-
-.form-row,
-.date-row {
+.form-row {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.form-label,
-.date-label {
-  flex: 0 0 180px;
-  margin-right: 10px;
+.form-label {
+  font-weight: bold;
+  width: 150px;
 }
 
-.form-input,
-.date-input {
-  flex: 1;
+.form-input {
+  width: calc(100% - 150px);
 }

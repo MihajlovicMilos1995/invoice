@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Input, Form } from "antd";
+import styles from "../../../Styles/AdditionalInformation.module.css";
 
 const brojUReciSrpski = (broj) => {
   const jedinice = [
@@ -136,46 +137,38 @@ const AdditionalInformationComponent = ({
   const razlikaZaUplatuText = brojUReciSrpski(razlikaZaUplatu);
 
   return (
-    <div className="container">
-      <div className="racun-information-container">
+    <div className={styles["side-by-side"]}>
+      <div className={styles["form-container-top"]}>
         <Form layout="vertical">
           {/* Racun broj */}
-          <div className="form-row">
-            <div className="form-label">Usluge izvrsio:</div>
-            <div className="form-input">
+          <div className={styles["form-row"]}>
+            <div className={styles["form-label"]}>Usluge izvrsio:</div>
+            <div className={styles["form-input"]}>
               <Input value={currentCompany.name} disabled />
             </div>
           </div>
 
           {/* Rok placanja */}
-          <div className="form-row">
-            <div className="form-label">Usluge primio:</div>
-            <div className="form-input">
+          <div className={styles["form-row"]}>
+            <div className={styles["form-label"]}>Usluge primio:</div>
+            <div className={styles["form-input"]}>
               <Input value={currentPartner.name} disabled />
-            </div>
-          </div>
-
-          {/* Nacin placanja */}
-          <div className="form-row">
-            <div className="form-label">Nacin placanja:</div>
-            <div className="form-input">
-              <Input />
             </div>
           </div>
         </Form>
       </div>
 
-      <div className="racun-date-information-container">
+      <div className={styles["form-container"]}>
         <Form>
-          <div className="form=row">
-            <div className="form-label">Ukupna vrednost</div>
-            <div className="form-input">
+          <div className={styles["form-row"]}>
+            <div className={styles["form-label"]}>Ukupna vrednost:</div>
+            <div className={styles["form-input"]}>
               <Input value={totalValue} addonAfter="RSD" />
             </div>
           </div>
-          <div className="form=row">
-            <div className="form-label">Uplaceno avansno</div>
-            <div className="form-input">
+          <div className={styles["form-row"]}>
+            <div className={styles["form-label"]}>Uplaceno avansno:</div>
+            <div className={`${styles["form-input"]} ${styles["fixed-width"]}`}>
               <Input
                 value={uplacenoAvansno}
                 onChange={handleUplacenoAvansnoChange}
@@ -183,9 +176,9 @@ const AdditionalInformationComponent = ({
               />
             </div>
           </div>
-          <div className="form=row">
-            <div className="form-label">Razlika za uplatu</div>
-            <div className="form-input">
+          <div className={styles["form-row"]}>
+            <div className={styles["form-label"]}>Razlika za uplatu:</div>
+            <div className={styles["form-input"]}>
               <Input value={razlikaZaUplatuText} addonAfter="RSD" />
             </div>
           </div>
@@ -194,5 +187,4 @@ const AdditionalInformationComponent = ({
     </div>
   );
 };
-
 export default AdditionalInformationComponent;

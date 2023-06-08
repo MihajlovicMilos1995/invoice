@@ -144,36 +144,44 @@ const Companies = () => {
         }}
         onOk={handleModalOk}
       >
-        <Form form={form}>
+        <Form
+          form={form}
+          layout="vertical"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <Form.Item label="Ime" name="name">
-            <Input />
+            <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Direktor" name="director">
-            <Input />
+            <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="PIB" name="pib">
-            <Input />
+            <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Email" name="email">
-            <Input />
+            <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Telefon" name="phone">
-            <Input />
+            <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Adresa" name="address">
-            <Input />
+            <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Grad" name="grad">
-            <Input />
+            <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="MB" name="mb">
-            <Input />
+            <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Sifra delatnosti" name="sifra_delatnosti">
-            <Input />
+            <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Tekući račun" name="tekuci_racun">
-            <Input />
+            <Input style={{ width: "300px" }} />
           </Form.Item>
         </Form>
       </Modal>

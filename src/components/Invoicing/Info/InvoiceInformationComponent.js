@@ -1,10 +1,10 @@
 import React from "react";
 import { DatePicker, Input, Form } from "antd";
-import "../../../Styles/InvoiceInformationComponent.css";
+import style from "../../../Styles/InvoiceInformationComponent.module.css";
 
 const InvoiceInformationComponent = () => {
   return (
-    <div className="container">
+    <div className={style.container}>
       <div className="racun-information-container">
         <Form layout="vertical">
           {/* Racun broj */}
@@ -34,31 +34,31 @@ const InvoiceInformationComponent = () => {
       </div>
 
       <div className="racun-date-information-container">
-        <div className="date-row">
+        <div className="date-row" style={{ marginTop: "5px" }}>
           <div className="date-label">Datum izdavanja racuna:</div>
           <div className="date-input">
-            <DatePicker format="DD/MM/YYYY" />
+            <DatePicker format="DD/MM/YYYY" placeholder="Izaberite datum" />
           </div>
         </div>
 
-        <div className="date-row">
+        <div className="date-row" style={{ marginTop: "5px", width: "157px" }}>
           <div className="date-label">Mesto izdavanja racuna:</div>
           <div className="date-input">
-            <Input />
+            <Input value="Novi Sad" />
           </div>
         </div>
 
-        <div className="date-row">
+        <div className="date-row" style={{ marginTop: "5px" }}>
           <div className="date-label">Datum prometa dobara i usluga:</div>
           <div className="date-input">
-            <DatePicker format="DD/MM/YYY" />
+            <DatePicker format="DD/MM/YYY" placeholder="Izaberite datum" />
           </div>
         </div>
 
-        <div className="date-row">
+        <div className="date-row" style={{ marginTop: "5px", width: "157px" }}>
           <div className="date-label">Mesto prometa racuna:</div>
           <div className="date-input">
-            <Input />
+            <Input value="Novi Sad" />
           </div>
         </div>
       </div>

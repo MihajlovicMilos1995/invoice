@@ -7,7 +7,8 @@ import CompanyInformationComponent from "./Info/CompanyInformationComponent";
 import InvoiceInformationComponent from "./Info/InvoiceInformationComponent";
 import InvoiceTableComponent from "./Info/InvoiceTableComponent";
 import AdditionalInformationComponent from "./Info/AdditionalInformationComponent";
-import InvoiceTemplate from "../Partners/Partners";
+import InvoiceTemplate from "./InvoiceTemplate";
+import PartnerInformationComponent from "./Info/PartnerInformationComponent";
 
 import "../../Styles/Invoice.css";
 import { Button, Modal } from "antd";
@@ -28,11 +29,11 @@ const Invoice = () => {
 
     html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF();
+      const pdf = new jsPDF("p", "mm", "a4");
       pdf.addImage(imgData, "PNG", 0, 0);
-      const pdfBlob = pdf.output("blob"); // Generate the PDF as a Blob
-      setInvoicePDF(pdfBlob); // Set the PDF Blob in state
-      openModal(); // Open the modal to preview the invoice
+      const pdfBlob = pdf.output("blob");
+      setInvoicePDF(pdfBlob);
+      openModal();
     });
   };
 
@@ -82,38 +83,42 @@ const Invoice = () => {
   };
 
   return (
-    <div className="invoice-container" ref={invoiceRef}>
-      <CompanyInformationComponent
-        companies={companies}
-        isCompany={true}
-        setCurrentCompany={setCurrentCompany}
-      />
+    <div>
+      <div
+        className="invoice-container"
+        style={{ padding: "5px" }}
+        ref={invoiceRef}
+      >
+        <CompanyInformationComponent
+          companies={companies}
+          setCurrentCompany={setCurrentCompany}
+        />
 
-      <div className="company-partner-container">
-        <div className="company-information-container">
-          <InvoiceInformationComponent />
+        <div className="company-partner-container">
+          <div className="company-information-container">
+            <InvoiceInformationComponent />
+          </div>
+          <div className="partner-information-container">
+            <PartnerInformationComponent
+              companies={partners}
+              setCurrentPartner={setCurrentPartner}
+            />
+          </div>
         </div>
-        <div className="partner-information-container">
-          <CompanyInformationComponent
-            companies={partners}
-            isCompany={false}
-            setCurrentPartner={setCurrentPartner}
+
+        <hr />
+
+        <div className="table-container">
+          <InvoiceTableComponent setTotalValue={setTotalValue} />
+        </div>
+
+        <div className="additional-information-container">
+          <AdditionalInformationComponent
+            totalValue={totalValue}
+            currentCompany={currentCompany}
+            currentPartner={currentPartner}
           />
         </div>
-      </div>
-
-      <hr />
-
-      <div className="table-container">
-        <InvoiceTableComponent setTotalValue={setTotalValue} />
-      </div>
-
-      <div className="additional-information-container">
-        <AdditionalInformationComponent
-          totalValue={totalValue}
-          currentCompany={currentCompany}
-          currentPartner={currentPartner}
-        />
       </div>
       <Button onClick={exportAsPDF}>PDF</Button>
       {isModalOpen && (

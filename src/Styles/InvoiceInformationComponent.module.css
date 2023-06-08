@@ -1,6 +1,7 @@
 .container {
   display: flex;
   justify-content: space-between;
+  max-width: 30rem;
 }
 
 .racun-information-container,
@@ -25,4 +26,5 @@
 .form-input,
 .date-input {
   flex: 1;
+  margin-right: 10px;
 }

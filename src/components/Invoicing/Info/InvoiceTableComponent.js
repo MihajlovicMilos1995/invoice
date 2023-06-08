@@ -27,6 +27,11 @@ const InvoiceTableComponent = ({ setTotalValue }) => {
     const updatedData = data.filter((row) => row.id !== id);
     setData(updatedData);
     setRowCount(rowCount - 1);
+
+    const reindexedData = updatedData.map((row, index) => {
+      return { ...row, id: index };
+    });
+    setData(reindexedData);
   };
 
   const handleInputChange = (value, id, fieldName) => {
@@ -59,8 +64,9 @@ const InvoiceTableComponent = ({ setTotalValue }) => {
   };
 
   const renderTableRows = () => {
-    return data.map((row) => (
+    return data.map((row, index) => (
       <tr key={row.id}>
+        <td>{index + 1}</td>
         <td>
           <Input
             placeholder="Naziv usluge"
@@ -68,15 +74,10 @@ const InvoiceTableComponent = ({ setTotalValue }) => {
               handleInputChange(e.target.value, row.id, "nazivUsluge")
             }
           />
-          <Input
-            placeholder="Opis usluge"
-            onChange={(e) =>
-              handleInputChange(e.target.value, row.id, "opisUsluge")
-            }
-          />
         </td>
         <td>
           <Input
+            style={{ width: "100px" }}
             placeholder="Kolicina"
             onChange={(e) =>
               handleInputChange(e.target.value, row.id, "kolicina")
@@ -85,12 +86,14 @@ const InvoiceTableComponent = ({ setTotalValue }) => {
         </td>
         <td>
           <Input
+            style={{ width: "100px" }}
             placeholder="Cena"
             onChange={(e) => handleInputChange(e.target.value, row.id, "cena")}
           />
         </td>
         <td>
           <Input
+            style={{ width: "100px" }}
             placeholder="Vrednost"
             onChange={(e) =>
               handleInputChange(e.target.value, row.id, "vrednost")
@@ -99,9 +102,8 @@ const InvoiceTableComponent = ({ setTotalValue }) => {
         </td>
         <td>
           <Input
-            placeholder="Rabat"
+            style={{ width: "50px" }}
             onChange={(e) => handleInputChange(e.target.value, row.id, "rabat")}
-            addonAfter="%"
           />
         </td>
         <td>
@@ -111,7 +113,6 @@ const InvoiceTableComponent = ({ setTotalValue }) => {
             onChange={(e) =>
               handleInputChange(e.target.value, row.id, "ukupno")
             }
-            addonAfter="RSD"
           />
         </td>
         <td>
@@ -146,6 +147,7 @@ const InvoiceTableComponent = ({ setTotalValue }) => {
       <table>
         <thead>
           <tr>
+            <th>r.Br</th>
             <th>Naziv usluga</th>
             <th>Obim usluga(kol.)</th>
             <th>Cena</th>
@@ -154,10 +156,21 @@ const InvoiceTableComponent = ({ setTotalValue }) => {
             <th>Ukupno</th>
             <th>Akcija</th>
           </tr>
+          <tr>
+            <th>-</th>
+            <th>-</th>
+            <th>-</th>
+            <th>RSD</th>
+            <th>RSD</th>
+            <th>%</th>
+            <th>RSD</th>
+          </tr>
         </thead>
         <tbody>{renderTableRows()}</tbody>
       </table>
-      <Button onClick={addRow}>Dodaj stavku</Button>
+      <Button style={{ marginTop: "10px" }} onClick={addRow}>
+        Dodaj stavku
+      </Button>
     </div>
   );
 };

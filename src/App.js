@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import SideNav from "./components/Nav/SideNav";
+import SideNav from "./components/Nav/NavBar";
 import Invoice from "./components/Invoicing/Invoice";
 import Company from "./components/Company/Company";
 import Partners from "./components/Partners/Partners";
