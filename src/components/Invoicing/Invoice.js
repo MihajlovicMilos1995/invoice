@@ -14,39 +14,55 @@ import "../../Styles/Invoice.css";
 import { Button, Modal } from "antd";
 
 const Invoice = () => {
+  //get information form database
   const [companies, setCompanies] = useState([{}]);
   const [partners, setPartners] = useState([{}]);
+  //props to pass to modal
   const [currentCompany, setCurrentCompany] = useState({});
   const [currentPartner, setCurrentPartner] = useState({});
   const [totalValue, setTotalValue] = useState();
+  const [invoiceData, setInvoiceData] = useState({});
+  const [additionalInformationProps, setAdditionalInformationProps] = useState({
+    uplacenoAvansno: 0 || null,
+    paymentTotal: 0 || null,
+  });
+
+  const [tableInformation, setTableInformation] = useState([{}]);
+
+  const [invoiceInformation, setInvoiceInformation] = useState([
+    {
+      currentCompany,
+      currentPartner,
+      totalValue,
+      invoiceData,
+      additionalInformationProps,
+      tableInformation,
+    },
+  ]);
+
+  useEffect(() => {
+    setInvoiceInformation((prevState) => ({
+      ...prevState,
+      currentCompany,
+      currentPartner,
+      totalValue,
+      invoiceData,
+      additionalInformationProps,
+      tableInformation,
+    }));
+  }, [
+    currentCompany,
+    currentPartner,
+    totalValue,
+    additionalInformationProps,
+    tableInformation,
+    invoiceData,
+  ]);
+
+  //modal manipulation
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [invoicePDF, setInvoicePDF] = useState(null);
 
   const invoiceRef = useRef();
-
-  const exportAsPDF = () => {
-    const input = invoiceRef.current;
-
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      pdf.addImage(imgData, "PNG", 0, 0);
-      const pdfBlob = pdf.output("blob");
-      setInvoicePDF(pdfBlob);
-      openModal();
-    });
-  };
-
-  const downloadPDF = () => {
-    if (invoicePDF) {
-      const url = URL.createObjectURL(invoicePDF);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "invoice.pdf";
-      link.click();
-      URL.revokeObjectURL(url);
-    }
-  };
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -96,7 +112,10 @@ const Invoice = () => {
 
         <div className="company-partner-container">
           <div className="company-information-container">
-            <InvoiceInformationComponent />
+            <InvoiceInformationComponent
+              setInvoiceData={setInvoiceData}
+              currentCompany={currentCompany}
+            />
           </div>
           <div className="partner-information-container">
             <PartnerInformationComponent
@@ -109,7 +128,10 @@ const Invoice = () => {
         <hr />
 
         <div className="table-container">
-          <InvoiceTableComponent setTotalValue={setTotalValue} />
+          <InvoiceTableComponent
+            setTotalValue={setTotalValue}
+            setTableInformation={setTableInformation}
+          />
         </div>
 
         <div className="additional-information-container">
@@ -117,22 +139,20 @@ const Invoice = () => {
             totalValue={totalValue}
             currentCompany={currentCompany}
             currentPartner={currentPartner}
+            setAdditionalInformationProps={setAdditionalInformationProps}
           />
         </div>
       </div>
-      <Button onClick={exportAsPDF}>PDF</Button>
+
+      <Button onClick={openModal}>PDF</Button>
       {isModalOpen && (
-        <Modal
-          onCancel={closeModal}
-          open={isModalOpen}
-          width={1000}
-          className="custom-modal"
-          centered
-          destroyOnClose
-        >
-          <InvoiceTemplate invoicePDF={invoicePDF} />
-          <Button onClick={downloadPDF}>Download PDF</Button>
-        </Modal>
+        <>
+          <InvoiceTemplate
+            invoiceInformation={invoiceInformation}
+            isModalOpen={isModalOpen}
+            onCancel={closeModal}
+          />
+        </>
       )}
     </div>
   );

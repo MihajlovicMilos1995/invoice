@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Input, Form } from "antd";
 import styles from "../../../Styles/AdditionalInformation.module.css";
 
@@ -116,25 +116,38 @@ const brojUReciSrpski = (broj) => {
 
   if (decimalniDeo > 0) {
     const decimalniText = decimalniDeo.toFixed(2).split(".")[1];
-    tekst += ` zarez ${brojUReciSrpski(decimalniText)}`;
+    tekst += ` , ${brojUReciSrpski(decimalniText)}`;
   }
 
   return tekst.trim();
 };
+
 const AdditionalInformationComponent = ({
   totalValue,
   currentCompany,
   currentPartner,
+  setAdditionalInformationProps,
 }) => {
   const [uplacenoAvansno, setUplacenoAvansno] = useState(0);
+
+  const razlikaZaUplatu = totalValue - uplacenoAvansno;
+  const razlikaZaUplatuText = brojUReciSrpski(razlikaZaUplatu);
+
+  useEffect(() => {
+    setAdditionalInformationProps((prevState) => ({
+      ...prevState,
+      paymentTotal: razlikaZaUplatu.toFixed(2),
+    }));
+  }, [totalValue, uplacenoAvansno]);
 
   const handleUplacenoAvansnoChange = (e) => {
     const value = e.target.value;
     setUplacenoAvansno(value);
+    setAdditionalInformationProps((prevState) => ({
+      ...prevState,
+      uplacenoAvansno: value,
+    }));
   };
-
-  const razlikaZaUplatu = totalValue - uplacenoAvansno;
-  const razlikaZaUplatuText = brojUReciSrpski(razlikaZaUplatu);
 
   return (
     <div className={styles["side-by-side"]}>
@@ -179,7 +192,7 @@ const AdditionalInformationComponent = ({
           <div className={styles["form-row"]}>
             <div className={styles["form-label"]}>Razlika za uplatu:</div>
             <div className={styles["form-input"]}>
-              <Input value={razlikaZaUplatuText} addonAfter="RSD" />
+              <Input value={razlikaZaUplatu} addonAfter="RSD" />
             </div>
           </div>
         </Form>

@@ -9,7 +9,7 @@
       "phone": "+1 (123) 456-7890",
       "address": "123 Main Street",
       "city": "City, Country",
-      "mb": "987654321",
+      "mb": "98765432",
       "tekuci_racun": "1234567890",
       "sifra_delatnosti": 2
     },
@@ -22,7 +22,7 @@
       "phone": "+1 (987) 654-3210",
       "address": "456 Elm Street",
       "city": "City, Country",
-      "mb": "123456789",
+      "mb": "12345678",
       "tekuci_racun": "0987654321",
       "sifra_delatnosti": 2
     },
@@ -35,7 +35,7 @@
       "phone": "+1 (555) 123-4567",
       "address": "789 Oak Avenue",
       "city": "City, Country",
-      "mb": "987654123",
+      "mb": "98765412",
       "tekuci_racun": "9876543210",
       "sifra_delatnosti": 2
     },
@@ -62,7 +62,7 @@
       "phone": "+1 (111) 111-1111",
       "address": "111 Partner Street",
       "city": "City, Country",
-      "mb": "111111111",
+      "mb": "11111111",
       "tekuci_racun": "1111111111",
       "sifra_delatnosti": 2
     },
@@ -75,7 +75,7 @@
       "phone": "+1 (222) 222-2222",
       "address": "222 Partner Street",
       "city": "City, Country",
-      "mb": "222222222",
+      "mb": "22222222",
       "tekuci_racun": "2222222222",
       "sifra_delatnosti": 2
     },
@@ -88,7 +88,7 @@
       "phone": "+1 (333) 333-3333",
       "address": "333 Partner Street",
       "city": "City, Country",
-      "mb": "333333333",
+      "mb": "33333333",
       "tekuci_racun": "3333333333",
       "sifra_delatnosti": 2
     },
@@ -100,7 +100,7 @@
       "phone": "asd",
       "address": "asd",
       "mb": "asd",
-      "tekuci_racun": "asd",
+      "tekuci_racun": "123",
       "city": "asd",
       "id": 4,
       "sifra_delatnosti": 2

@@ -1,7 +1,7 @@
 import { Input, Button } from "antd";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const InvoiceTableComponent = ({ setTotalValue }) => {
+const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
   const [data, setData] = useState([{ id: 0 }]);
   const [rowCount, setRowCount] = useState(1);
   const [nextRowId, setNextRowId] = useState(1);
@@ -22,6 +22,11 @@ const InvoiceTableComponent = ({ setTotalValue }) => {
     setRowCount(rowCount + 1);
     setNextRowId(nextRowId + 1);
   };
+
+  useEffect(() => {
+    setTableInformation(data);
+    setTotalValue(calculateTotal());
+  }, [data, setTableInformation]);
 
   const deleteRow = (id) => {
     const updatedData = data.filter((row) => row.id !== id);
@@ -139,8 +144,6 @@ const InvoiceTableComponent = ({ setTotalValue }) => {
 
     return total.toFixed(2);
   };
-
-  setTotalValue(calculateTotal());
 
   return (
     <div>

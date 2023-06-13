@@ -21,8 +21,8 @@ const CompanyInformationComponent = ({ companies, setCurrentCompany }) => {
             placeholder="Pronadjite firmu"
             onSelect={handleCompanySelect}
           >
-            {companies.map((company) => (
-              <Select.Option key={company.id} value={company.name}>
+            {companies.map((company, id) => (
+              <Select.Option key={id} value={company.name}>
                 {company.name}
               </Select.Option>
             ))}

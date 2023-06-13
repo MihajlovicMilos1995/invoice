@@ -36,7 +36,7 @@ const NavBar = () => {
         <NavItem eventKey="partners">
           <NavIcon>
             <i
-              class="fa-sharp fa-solid fa-address-book"
+              className="fa-sharp fa-solid fa-address-book"
               style={{ fontSize: "1.75em" }}
             ></i>
           </NavIcon>
@@ -45,7 +45,7 @@ const NavBar = () => {
         <NavItem eventKey="company">
           <NavIcon>
             <i
-              class="fa-sharp fa-solid fa-address-card"
+              className="fa-sharp fa-solid fa-address-card"
               style={{ fontSize: "1.75em" }}
             />
           </NavIcon>

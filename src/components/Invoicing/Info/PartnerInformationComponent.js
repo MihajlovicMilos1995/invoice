@@ -22,8 +22,8 @@ const PartnerInformationComponent = ({ companies, setCurrentPartner }) => {
             onSelect={handlePartnerSelect}
             style={{ width: "150px" }}
           >
-            {companies.map((partner) => (
-              <Select.Option key={partner.id} value={partner.name}>
+            {companies.map((partner, id) => (
+              <Select.Option key={id} value={partner.name}>
                 {partner.name}
               </Select.Option>
             ))}
