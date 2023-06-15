@@ -1,17 +1,18 @@
 .form-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 20px;
-  margin-right: 60rem;
   margin-top: 20px;
 }
+
 .side-by-side {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
+
 .form-container-top {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 20px;
   margin-top: 20px;
 }
@@ -28,8 +29,13 @@
 
 .form-input {
   flex: 1;
-  width: 200px;
+  width: 100%;
 }
+
 .fixed-width {
   width: 20px;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }

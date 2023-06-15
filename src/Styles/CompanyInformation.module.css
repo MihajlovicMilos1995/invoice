@@ -15,5 +15,5 @@
 }
 
 .form-input {
-  width: calc(100% - 150px);
+  flex: 1;
 }

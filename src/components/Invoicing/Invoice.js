@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import CompanyInformationComponent from "./Info/CompanyInformationComponent";
 import InvoiceInformationComponent from "./Info/InvoiceInformationComponent";
@@ -11,7 +11,7 @@ import InvoiceTemplate from "./InvoiceTemplate";
 import PartnerInformationComponent from "./Info/PartnerInformationComponent";
 
 import "../../Styles/Invoice.css";
-import { Button, Modal } from "antd";
+import { Button } from "antd";
 
 const Invoice = () => {
   //get information form database
@@ -25,6 +25,9 @@ const Invoice = () => {
   const [additionalInformationProps, setAdditionalInformationProps] = useState({
     uplacenoAvansno: 0 || null,
     paymentTotal: 0 || null,
+    note:
+      "" ||
+      "Rok za primedbu 5 dana. Prilikom uplate upisati broj računa u poziv na broj odobrenja u nalogu za prenos:\nDokument je kreiran elektronskom obradom podataka i punovažan je bez pečata i potpisa.",
   });
 
   const [tableInformation, setTableInformation] = useState([{}]);
@@ -105,46 +108,55 @@ const Invoice = () => {
         style={{ padding: "5px" }}
         ref={invoiceRef}
       >
-        <CompanyInformationComponent
-          companies={companies}
-          setCurrentCompany={setCurrentCompany}
-        />
-
-        <div className="company-partner-container">
-          <div className="company-information-container">
-            <InvoiceInformationComponent
-              setInvoiceData={setInvoiceData}
-              currentCompany={currentCompany}
+        <Row>
+          <Col span={6} style={{ width: "50%" }}>
+            <CompanyInformationComponent
+              companies={companies}
+              setCurrentCompany={setCurrentCompany}
             />
-          </div>
-          <div className="partner-information-container">
+          </Col>
+          <Col span={6} style={{ width: "50%" }}>
             <PartnerInformationComponent
               companies={partners}
               setCurrentPartner={setCurrentPartner}
             />
-          </div>
-        </div>
+          </Col>
+        </Row>
+
+        <Row style={{ marginTop: "10px" }}>
+          <Col>
+            <InvoiceInformationComponent
+              setInvoiceData={setInvoiceData}
+              currentCompany={currentCompany}
+            />
+          </Col>
+          <Col xs={12} md={8} style={{ marginLeft: "auto" }}>
+            <InvoiceTableComponent
+              setTotalValue={setTotalValue}
+              setTableInformation={setTableInformation}
+            />
+          </Col>
+        </Row>
 
         <hr />
 
-        <div className="table-container">
-          <InvoiceTableComponent
-            setTotalValue={setTotalValue}
-            setTableInformation={setTableInformation}
-          />
-        </div>
-
-        <div className="additional-information-container">
-          <AdditionalInformationComponent
-            totalValue={totalValue}
-            currentCompany={currentCompany}
-            currentPartner={currentPartner}
-            setAdditionalInformationProps={setAdditionalInformationProps}
-          />
-        </div>
+        <Row>
+          <Col>
+            <AdditionalInformationComponent
+              totalValue={totalValue}
+              currentCompany={currentCompany}
+              currentPartner={currentPartner}
+              setAdditionalInformationProps={setAdditionalInformationProps}
+            />
+          </Col>
+        </Row>
       </div>
-
-      <Button onClick={openModal}>PDF</Button>
+      <Button
+        onClick={openModal}
+        disabled={Object.keys(currentCompany).length === 0}
+      >
+        PDF
+      </Button>
       {isModalOpen && (
         <>
           <InvoiceTemplate

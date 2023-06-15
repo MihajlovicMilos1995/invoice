@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Input, Form } from "antd";
+import { Row, Col } from "react-bootstrap";
 import styles from "../../../Styles/AdditionalInformation.module.css";
+import TextArea from "antd/es/input/TextArea";
 
 const brojUReciSrpski = (broj) => {
   const jedinice = [
@@ -130,6 +132,9 @@ const AdditionalInformationComponent = ({
 }) => {
   const [uplacenoAvansno, setUplacenoAvansno] = useState(0);
 
+  const notePlaceholder =
+    "Rok za primedbu 5 dana. Prilikom uplate upisati broj računa u poziv na broj odobrenja u nalogu za prenos:\nDokument je kreiran elektronskom obradom podataka i punovažan je bez pečata i potpisa.";
+
   const razlikaZaUplatu = totalValue - uplacenoAvansno;
   const razlikaZaUplatuText = brojUReciSrpski(razlikaZaUplatu);
 
@@ -148,56 +153,88 @@ const AdditionalInformationComponent = ({
       uplacenoAvansno: value,
     }));
   };
-
+  const handleNoteChange = (e) => {
+    setAdditionalInformationProps((prevState) => ({
+      ...prevState,
+      note: e.target.value,
+    }));
+  };
   return (
-    <div className={styles["side-by-side"]}>
-      <div className={styles["form-container-top"]}>
-        <Form layout="vertical">
-          {/* Racun broj */}
-          <div className={styles["form-row"]}>
-            <div className={styles["form-label"]}>Usluge izvrsio:</div>
-            <div className={styles["form-input"]}>
-              <Input value={currentCompany.name} disabled />
-            </div>
+    <Row>
+      <Col xs={6} md={3}>
+        <div className={styles["side-by-side"]}>
+          <div className={styles["form-container-top"]}>
+            <Form layout="vertical">
+              {/* Racun broj */}
+              <div className={styles["form-row"]}>
+                <div className={styles["form-label"]}>Usluge izvrsio:</div>
+                <div className={styles["form-input"]}>
+                  <Input value={currentCompany.director} disabled />
+                </div>
+              </div>
+              {/* Rok placanja */}
+              <div className={styles["form-row"]}>
+                <div className={styles["form-label"]}>Usluge primio:</div>
+                <div className={styles["form-input"]}>
+                  <Input value={currentPartner.director} disabled />
+                </div>
+              </div>
+            </Form>
           </div>
-
-          {/* Rok placanja */}
-          <div className={styles["form-row"]}>
-            <div className={styles["form-label"]}>Usluge primio:</div>
-            <div className={styles["form-input"]}>
-              <Input value={currentPartner.name} disabled />
-            </div>
+        </div>
+      </Col>
+      <Col xs={6} md={3}>
+        <div className={styles["side-by-side"]}>
+          <div
+            className={styles["form-container"]}
+            style={{ display: "block" }}
+          >
+            <Form>
+              <div className={styles["form-row"]}>
+                <div className={styles["form-label"]}>Ukupna vrednost:</div>
+                <div className={styles["form-input"]}>
+                  <Input value={totalValue} addonAfter="RSD" />
+                </div>
+              </div>
+              <div className={styles["form-row"]}>
+                <div className={styles["form-label"]}>Uplaceno avansno:</div>
+                <div
+                  className={`${styles["form-input"]} ${styles["fixed-width"]}`}
+                >
+                  <Input
+                    value={uplacenoAvansno}
+                    onChange={handleUplacenoAvansnoChange}
+                    addonAfter="RSD"
+                  />
+                </div>
+              </div>
+              <div className={styles["form-row"]}>
+                <div className={styles["form-label"]}>Razlika za uplatu:</div>
+                <div className={styles["form-input"]}>
+                  <Input value={razlikaZaUplatu} addonAfter="RSD" />
+                </div>
+              </div>
+            </Form>
           </div>
-        </Form>
-      </div>
-
-      <div className={styles["form-container"]}>
-        <Form>
-          <div className={styles["form-row"]}>
-            <div className={styles["form-label"]}>Ukupna vrednost:</div>
-            <div className={styles["form-input"]}>
-              <Input value={totalValue} addonAfter="RSD" />
+        </div>
+      </Col>
+      <Col xs={12} md={6}>
+        <div className={styles["form-container"]} style={{ display: "block" }}>
+          <Form>
+            <div className={styles["form-row"]} style={{ width: "100%" }}>
+              <div className={styles["form-label"]}>Napomena:</div>
+              <div className={`${styles["form-input"]} ${styles["flex-grow"]}`}>
+                <TextArea
+                  onChange={handleNoteChange}
+                  placeholder={notePlaceholder}
+                  style={{ width: "100%" }}
+                />
+              </div>
             </div>
-          </div>
-          <div className={styles["form-row"]}>
-            <div className={styles["form-label"]}>Uplaceno avansno:</div>
-            <div className={`${styles["form-input"]} ${styles["fixed-width"]}`}>
-              <Input
-                value={uplacenoAvansno}
-                onChange={handleUplacenoAvansnoChange}
-                addonAfter="RSD"
-              />
-            </div>
-          </div>
-          <div className={styles["form-row"]}>
-            <div className={styles["form-label"]}>Razlika za uplatu:</div>
-            <div className={styles["form-input"]}>
-              <Input value={razlikaZaUplatu} addonAfter="RSD" />
-            </div>
-          </div>
-        </Form>
-      </div>
-    </div>
+          </Form>
+        </div>
+      </Col>
+    </Row>
   );
 };
 export default AdditionalInformationComponent;

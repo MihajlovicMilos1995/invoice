@@ -47,59 +47,103 @@ class InvoiceModal extends React.Component {
           destroyOnClose
         >
           <div id="invoiceCapture">
-            <div className="d-flex flex-row justify-content-between align-items-start bg-light w-100 p-4">
-              <div className="w-100">
-                <h4 className="fw-bold my-2">
-                  {company.director},{company.name || "John Uberbacher"}
-                </h4>
-                <p className="fw-bold  mb-1">
-                  {company.city}, {company.address}
-                </p>
-                <p className="text-secondary fw-bold">
-                  PIB:{company.pib} MB:{company.mb}
-                  <p className="text-secondary">
-                    Tekuci racun:{company.tekuci_racun}
-                    <p>
-                      Telefon:{company.phone} E-mail:{company.email}{" "}
-                    </p>
+            <div className="container">
+              <div className="row">
+                <div className="col-md-5" style={{ marginTop: "20px" }}>
+                  <div className="d-flex align-items-center">
+                    <img src={company.logo} alt="Company Logo" />
+                  </div>
+                </div>
+                <div className="col-md-7" style={{ marginTop: "15px" }}>
+                  <h4 className="fw-bold my-2" style={{ fontSize: "15px" }}>
+                    {company.director}, {company.name},{" "}
+                    {company.city.toUpperCase()}
+                  </h4>
+                  <p className="fw-bold mb-1" style={{ fontSize: "15px" }}>
+                    {company.city}, {company.address}
                   </p>
-                </p>
+                  <p
+                    className="text-secondary fw-bold"
+                    style={{ marginBottom: "-2px", fontSize: "12px" }}
+                  >
+                    PIB: {company.pib} MB: {company.mb}
+                  </p>
+                  <p
+                    className="text-secondary fw-bold mb-1"
+                    style={{ fontSize: "12px" }}
+                  >
+                    Tekuci racun: {company.tekuci_racun}
+                  </p>
+                  <div>
+                    <p
+                      className="text-secondary fw-bold mb-1"
+                      style={{ fontSize: "12px" }}
+                    >
+                      Telefon: {company.phone} E-mail: {company.email}
+                    </p>
+                  </div>
+                </div>
+                <span style={{ fontSize: "10px" }} className="text-center">
+                  *izdavalac računa nije obveznik PDV-a
+                </span>
+                <hr />
+                <span
+                  style={{
+                    fontSize: "12px",
+                    display: "inline-block",
+                    marginTop: "-15px",
+                  }}
+                  className="text-center text-secondary fw-bold"
+                >
+                  Šifra delatnosti: {company.sifra_delatnosti}
+                </span>
               </div>
             </div>
 
             <div className="p-4">
               <Row className="mb-4">
-                <Col md={4} style={{ fontSize: "13px" }}>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                    <div style={{ marginBottom: "5px" }}>
-                      <label style={{ marginRight: "5px" }}>Broj racuna:</label>
-                      <span style={{ fontWeight: "bold" }}>
-                        {invoiceData.racunBroj}
-                      </span>
-                    </div>
-
-                    <div style={{ marginBottom: "5px" }}>
-                      <label style={{ marginRight: "5px" }}>
-                        Rok placanja:
-                      </label>
-                      <span style={{ fontWeight: "bold" }}>
-                        {invoiceData.rokPlacanja}
-                      </span>
-                    </div>
-                    <div style={{ marginBottom: "5px" }}>
-                      <label style={{ marginRight: "5px" }}>
-                        Nacin placanja:
-                      </label>
-                      <span style={{ fontWeight: "bold" }}>
-                        {invoiceData.nacinPlacanja}
-                      </span>
-                    </div>
+                <Col
+                  md={5}
+                  style={{
+                    fontSize: "12px",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <div
+                    style={{
+                      marginBottom: "5px",
+                      display: "flex",
+                    }}
+                  >
+                    <label style={{ marginRight: "5px", minWidth: "150px" }}>
+                      Broj racuna:
+                    </label>
+                    <span style={{ fontWeight: "bold" }}>
+                      {invoiceData.racunBroj}
+                    </span>
                   </div>
-                </Col>
 
-                <Col md={4} style={{ fontSize: "13px" }}>
-                  <div style={{ marginBottom: "5px" }}>
-                    <label style={{ marginRight: "5px" }}>
+                  <div style={{ marginBottom: "5px", display: "flex" }}>
+                    <label style={{ marginRight: "5px", minWidth: "150px" }}>
+                      Rok placanja:
+                    </label>
+                    <span style={{ fontWeight: "bold" }}>
+                      {invoiceData.rokPlacanja}
+                    </span>
+                  </div>
+
+                  <div style={{ marginBottom: "5px", display: "flex" }}>
+                    <label style={{ marginRight: "5px", minWidth: "150px" }}>
+                      Nacin placanja:
+                    </label>
+                    <span style={{ fontWeight: "bold" }}>
+                      {invoiceData.nacinPlacanja}
+                    </span>
+                  </div>
+
+                  <div style={{ marginBottom: "5px", display: "flex" }}>
+                    <label style={{ marginRight: "5px", minWidth: "200px" }}>
                       Datum izdavanja racuna:
                     </label>
                     <span style={{ fontWeight: "bold" }}>
@@ -110,68 +154,92 @@ class InvoiceModal extends React.Component {
                         : ""}
                     </span>
                   </div>
-                  <div style={{ marginBottom: "5px" }}>
-                    <label style={{ marginRight: "5px" }}>
+
+                  <div style={{ marginBottom: "5px", display: "flex" }}>
+                    <label style={{ marginRight: "5px", minWidth: "200px" }}>
                       Datum prometa dobara i usluga:
                     </label>
                     <span style={{ fontWeight: "bold" }}>
-                      {invoiceData.datumIzdavanjaRacuna
+                      {invoiceData.datumPromenta
                         ? new Date(
-                            invoiceData.datumIzdavanjaRacuna
+                            invoiceData.datumPromenta
                           ).toLocaleDateString("en-GB")
                         : ""}
                     </span>
-                    <div style={{ marginBottom: "5px" }}>
-                      <label style={{ marginRight: "5px" }}>
-                        Mesto prometa dobara i usluga:
-                      </label>
-                      <span style={{ fontWeight: "bold" }}>
-                        {invoiceData.mestoPrometaRacuna}
-                      </span>
-                    </div>
-                    <div style={{ marginBottom: "5px" }}>
-                      <label style={{ marginRight: "5px" }}>
-                        Mesto izdavanja racuna:
-                      </label>
-                      <span style={{ fontWeight: "bold" }}>
-                        {invoiceData.mestoIzdavanjaRacuna}
-                      </span>
-                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      marginBottom: "5px",
+                      display: "flex",
+                    }}
+                  >
+                    <label style={{ marginRight: "5px", minWidth: "200px" }}>
+                      Mesto prometa dobara i usluga:
+                    </label>
+                    <span style={{ fontWeight: "bold" }}>
+                      {invoiceData.mestoPrometaRacuna}
+                    </span>
+                  </div>
+
+                  <div style={{ marginBottom: "5px", display: "flex" }}>
+                    <label style={{ marginRight: "5px", minWidth: "200px" }}>
+                      Mesto izdavanja racuna:
+                    </label>
+                    <span style={{ fontWeight: "bold" }}>
+                      {invoiceData.mestoIzdavanjaRacuna}
+                    </span>
                   </div>
                 </Col>
-
-                <Col md={4}>
+                <Col md={7} style={{ fontSize: "12px" }}>
                   <fieldset
-                    style={{ marginTop: "-25px" }}
-                    className="border rounded-3 p-1 table-responsive"
+                    style={{ marginTop: "-20px", padding: "3px" }}
+                    className="border rounded-3 table-responsive"
                   >
                     <legend
-                      style={{ fontSize: "16px" }}
+                      style={{ fontSize: "12px" }}
                       className="float-none w-auto px-3"
                     >
                       Kupac-Klijent
                     </legend>
                     <div
-                      style={{ fontSize: "13px", width: "100%" }}
+                      style={{ fontSize: "12px", width: "100%" }}
                       className="table-responsive"
                     >
                       <Table className={"table table-sm w-100 h-100"}>
                         <tbody>
                           <tr>
-                            <div>{partner.name || ""}</div>
-                            <div>{partner.address || ""}</div>
+                            <div className="fw-bold">{partner.name || ""}</div>
+                            <div className="fw-bold">
+                              {partner.address || ""}
+                            </div>
+                            <div className="fw-bold">{partner.city || ""}</div>
                           </tr>
                           <tr>
-                            <div>PIB:&nbsp;{partner.pib || ""}</div>
+                            <div>
+                              PIB:&nbsp;
+                              <span className="fw-bold">
+                                {partner.pib || ""}
+                              </span>
+                            </div>
                           </tr>
                           <tr>
                             <td style={{ border: "none" }}>
-                              <div>TEL:&nbsp;{partner.phone || ""}</div>
-                              <div>MB:&nbsp;{partner.mb || ""}</div>
+                              <div>
+                                MB:&nbsp;
+                                <span className="fw-bold">
+                                  {partner.mb || ""}
+                                </span>
+                              </div>
                             </td>
                           </tr>
                           <tr>
-                            <div>E-mail:&nbsp;{partner.email || ""}</div>
+                            <div>
+                              E-mail:&nbsp;
+                              <span className="fw-bold">
+                                {partner.email || ""}
+                              </span>
+                            </div>
                           </tr>
                         </tbody>
                       </Table>
@@ -179,10 +247,11 @@ class InvoiceModal extends React.Component {
                   </fieldset>
                 </Col>
               </Row>
-              <hr />
-              <Table className="mb-0">
-                <thead>
+              <hr style={{ marginTop: "-15px" }} />
+              <Table className="mb-0" style={{ marginTop: "-10px" }}>
+                <thead style={{ fontSize: "12px" }}>
                   <tr>
+                    <th>r.Br.</th>
                     <th>Naziv</th>
                     <th>Kol.</th>
                     <th className="text-end">Cena(RSD)</th>
@@ -191,10 +260,11 @@ class InvoiceModal extends React.Component {
                     <th className="text-end">Ukupno(RSD)</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody style={{ fontSize: "12px" }}>
                   {tableInformation.map((item, i) => {
                     return (
                       <tr id={i} key={i}>
+                        <td>{i + 1}</td>
                         <td>{item.nazivUsluge}</td>
                         <td style={{ width: "70px" }}>{item.kolicina}</td>
                         <td className="text-end" style={{ width: "100px" }}>
@@ -215,8 +285,10 @@ class InvoiceModal extends React.Component {
                 </tbody>
               </Table>
               <div style={{ display: "flex" }}>
-                <div style={{ marginTop: "68px" }}>
-                  <fieldset style={{ paddingTop: "-20px" }}>
+                <div style={{ marginTop: "50px" }}>
+                  <fieldset
+                    style={{ paddingTop: "-20px", marginBottom: "5px" }}
+                  >
                     <legend
                       style={{
                         fontSize: "10px",
@@ -224,17 +296,30 @@ class InvoiceModal extends React.Component {
                     >
                       Usluge izvrsio:
                     </legend>
-                    <span style={{ borderBottom: "1px solid black" }}>
-                      {company.director}
+                    <div
+                      style={{
+                        display: "inline-block",
+                        verticalAlign: "bottom",
+                        textAlign: "center",
+                        fontSize: "12px",
+                      }}
+                    >
+                      <div style={{ borderBottom: "1px solid black" }}>
+                        <span>{company.director}</span>
+                      </div>
+                      <div style={{ fontSize: "10px" }}>
+                        Ime, prezime, potpis
+                      </div>
+                    </div>
+                    <span style={{ fontSize: "10px" }}>
+                      &nbsp;&nbsp;&nbsp;M.P. &nbsp;&nbsp;&nbsp;
                     </span>
-                    &nbsp;&nbsp;&nbsp;M.P. &nbsp;&nbsp;&nbsp;
                     <div
                       style={{
                         display: "inline-block",
                         verticalAlign: "bottom",
                         textAlign: "center",
                       }}
-                      className="text-end"
                     >
                       <span
                         style={{
@@ -259,10 +344,22 @@ class InvoiceModal extends React.Component {
                   </fieldset>
                   <fieldset>
                     <legend style={{ fontSize: "10px" }}>Usluge primio:</legend>
-                    <span style={{ borderBottom: "1px solid black" }}>
-                      {partner.director}
+                    <div
+                      style={{
+                        display: "inline-block",
+                        verticalAlign: "bottom",
+                        textAlign: "center",
+                        fontSize: "12px",
+                      }}
+                    >
+                      <div style={{ borderBottom: "1px solid black" }}>
+                        <span>{partner.director}</span>
+                      </div>
+                      <div style={{ fontSize: "10px" }}>Primio</div>
+                    </div>
+                    <span style={{ fontSize: "10px" }}>
+                      &nbsp;&nbsp;&nbsp;M.P. &nbsp;&nbsp;&nbsp;
                     </span>
-                    &nbsp;&nbsp;&nbsp;M.P. &nbsp;&nbsp;&nbsp;
                     <div
                       style={{
                         display: "inline-block",
@@ -293,7 +390,7 @@ class InvoiceModal extends React.Component {
                   </fieldset>
                 </div>
                 <Table style={{ flex: "1" }}>
-                  <tbody>
+                  <tbody style={{ fontSize: "12px" }}>
                     <tr>
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
@@ -316,18 +413,18 @@ class InvoiceModal extends React.Component {
                         <td className="fw-bold" style={{ width: "100px" }}>
                           Porez:
                         </td>
-                        <td className="text-end" style={{ width: "100px" }}>
+                        <td className="text-end" style={{ width: "120px" }}>
                           {this.props.currency} {this.props.taxAmount || 0} %
                         </td>
                       </tr>
                     )}
-                    {this.uplacenoAvansno === 0.0 && (
+                    {additionalInformationProps.uplacenoAvansno !== 0.0 && (
                       <tr className="text-end">
                         <td></td>
                         <td className="fw-bold" style={{ width: "100px" }}>
                           Avansno:
                         </td>
-                        <td className="text-end" style={{ width: "100px" }}>
+                        <td className="text-end" style={{ width: "120px" }}>
                           {additionalInformationProps.uplacenoAvansno} RSD
                         </td>
                       </tr>
@@ -339,19 +436,21 @@ class InvoiceModal extends React.Component {
                       <td className="fw-bold" style={{ width: "100px" }}>
                         Za uplatu:
                       </td>
-                      <td className="text-end" style={{ width: "100px" }}>
-                        {this.props.currency}
+                      <td className="text-end" style={{ width: "120px" }}>
                         {additionalInformationProps.paymentTotal} RSD
                       </td>
                     </tr>
                   </tbody>
                 </Table>
-                {/* {this.props.info.notes && (
-                <div className="bg-light py-3 px-4 rounded">
-                  {this.props.info.notes}
-                </div>
-              )} */}
               </div>
+              {additionalInformationProps.note && (
+                <div
+                  className="bg-light py-3 px-4 rounded"
+                  style={{ fontSize: "12px" }}
+                >
+                  {additionalInformationProps.note}
+                </div>
+              )}
             </div>
           </div>
           <div className="pb-4 px-4">

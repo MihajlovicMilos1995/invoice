@@ -9,12 +9,14 @@ import SideNav, {
 } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import "../../Styles/SideNav.css";
 
 const NavBar = () => {
   const navigate = useNavigate();
   return (
     <SideNav
-      style={{ backgroundColor: "blue" }}
+      id=".sidenav.expanded"
+      style={{ backgroundColor: "#0D6EFD" }}
       onSelect={(selected) => {
         if (selected === "home") {
           navigate("/");

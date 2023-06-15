@@ -34,6 +34,10 @@
   font-size: 1.8rem;
 }
 
+.sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL {
+  min-width: 200px;
+}
+
 .nav-menu {
   display: grid;
   grid-template-columns: repeat(4, auto);

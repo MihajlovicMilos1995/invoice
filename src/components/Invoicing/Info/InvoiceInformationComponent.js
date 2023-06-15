@@ -7,6 +7,7 @@ const InvoiceInformationComponent = ({ setInvoiceData, currentCompany }) => {
     setInvoiceData((prevData) => ({
       ...prevData,
       [name]: value,
+
       mestoIzdavanjaRacuna: currentCompany.city,
       mestoPrometaRacuna: currentCompany.city,
     }));
@@ -16,7 +17,6 @@ const InvoiceInformationComponent = ({ setInvoiceData, currentCompany }) => {
     <div className={style.container}>
       <div className="racun-information-container">
         <Form layout="vertical">
-          {/* Racun broj */}
           <div className="form-row">
             <div className="form-label">Racun broj:</div>
             <div className="form-input">
@@ -26,7 +26,6 @@ const InvoiceInformationComponent = ({ setInvoiceData, currentCompany }) => {
             </div>
           </div>
 
-          {/* Rok placanja */}
           <div className="form-row">
             <div className="form-label">Rok placanja:</div>
             <div className="form-input">
@@ -37,8 +36,6 @@ const InvoiceInformationComponent = ({ setInvoiceData, currentCompany }) => {
               />
             </div>
           </div>
-
-          {/* Nacin placanja */}
           <div className="form-row">
             <div className="form-label">Nacin placanja:</div>
             <div className="form-input">

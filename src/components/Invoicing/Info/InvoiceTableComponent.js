@@ -147,7 +147,7 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
 
   return (
     <div>
-      <table>
+      <table className="table table-bordered rounded-3 table-responsive">
         <thead>
           <tr>
             <th>r.Br</th>
@@ -167,6 +167,7 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
             <th>RSD</th>
             <th>%</th>
             <th>RSD</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>{renderTableRows()}</tbody>

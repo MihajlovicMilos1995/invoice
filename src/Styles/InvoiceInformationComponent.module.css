@@ -20,11 +20,9 @@
 .form-label,
 .date-label {
   flex: 0 0 180px;
-  margin-right: 10px;
 }
 
 .form-input,
 .date-input {
   flex: 1;
-  margin-right: 10px;
 }
