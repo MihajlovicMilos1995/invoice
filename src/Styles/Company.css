@@ -1,0 +1,17 @@
+.container {
+  margin-left: -1rem;
+}
+.table {
+  margin-left: 3rem;
+  margin-top: 1vh;
+  width: 90rem;
+}
+
+@media only screen and (max-width: 1366px) {
+  .container {
+    margin-left: -10rem;
+  }
+  .table {
+    width: 70rem;
+  }
+}

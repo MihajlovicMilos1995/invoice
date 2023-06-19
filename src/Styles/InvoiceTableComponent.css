@@ -1,0 +1,44 @@
+.outer-container {
+  margin-right: 10rem;
+  margin-left: -10rem;
+}
+.tHeader {
+  width: 200px;
+}
+.kolicina {
+  width: 80px;
+}
+.cena {
+  width: 80px;
+}
+.vrednost {
+  width: 80px;
+}
+.ukupno {
+  width: 150px;
+}
+
+@media only screen and (max-width: 1366px) {
+  .outer-container {
+    margin-left: -2rem;
+  }
+  .nazivUsluge {
+    width: 130px;
+    font-size: 12px;
+  }
+  .cena {
+    width: 60px;
+    font-size: 12px;
+  }
+  .vrednost {
+    width: 65px;
+    font-size: 12px;
+  }
+  .ukupno {
+    width: 100px;
+    font-size: 12px;
+  }
+  .tHeader {
+    font-size: 12px;
+  }
+}

@@ -128,13 +128,20 @@ const Partners = () => {
 
   const body = { backgroundColor: "rgb(219, 61, 68)" };
   return (
-    <div>
-      <div>
+    <div className="container">
+      <div style={{ margin: "5px" }}>
         <h1>Partneri</h1>
       </div>
       <div>
-        <Button onClick={handleAddition}>Dodaj partnera</Button>
-        <Table dataSource={partners} columns={columns} />
+        <Button style={{ margin: "5px" }} onClick={handleAddition}>
+          Dodaj partnera
+        </Button>
+        <Table
+          className="table"
+          scroll={{ x: 400 }}
+          dataSource={partners}
+          columns={columns}
+        />
       </div>
       <Modal
         title={editingPartner ? "Uredi partnera" : "Dodaj partnera"}

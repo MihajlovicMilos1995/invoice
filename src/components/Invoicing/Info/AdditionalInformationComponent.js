@@ -227,7 +227,8 @@ const AdditionalInformationComponent = ({
                 <TextArea
                   onChange={handleNoteChange}
                   placeholder={notePlaceholder}
-                  style={{ width: "100%" }}
+                  rows={4}
+                  style={{ width: "80%" }}
                 />
               </div>
             </div>

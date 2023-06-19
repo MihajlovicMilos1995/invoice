@@ -1,5 +1,7 @@
 import { Input, Button } from "antd";
 import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../../../Styles/InvoiceTableComponent.css";
 
 const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
   const [data, setData] = useState([{ id: 0 }]);
@@ -71,10 +73,11 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
   const renderTableRows = () => {
     return data.map((row, index) => (
       <tr key={row.id}>
-        <td>{index + 1}</td>
+        <td className="tHeader">{index + 1}</td>
         <td>
           <Input
             placeholder="Naziv usluge"
+            className="nazivUsluge"
             onChange={(e) =>
               handleInputChange(e.target.value, row.id, "nazivUsluge")
             }
@@ -82,8 +85,8 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
         </td>
         <td>
           <Input
-            style={{ width: "100px" }}
-            placeholder="Kolicina"
+            className="kolicina"
+            placeholder="Kol."
             onChange={(e) =>
               handleInputChange(e.target.value, row.id, "kolicina")
             }
@@ -91,14 +94,14 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
         </td>
         <td>
           <Input
-            style={{ width: "100px" }}
+            className="cena"
             placeholder="Cena"
             onChange={(e) => handleInputChange(e.target.value, row.id, "cena")}
           />
         </td>
         <td>
           <Input
-            style={{ width: "100px" }}
+            className="vrednost"
             placeholder="Vrednost"
             onChange={(e) =>
               handleInputChange(e.target.value, row.id, "vrednost")
@@ -114,6 +117,7 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
         <td>
           <Input
             placeholder="Ukupno"
+            className="ukupno"
             value={row.ukupno}
             onChange={(e) =>
               handleInputChange(e.target.value, row.id, "ukupno")
@@ -146,35 +150,35 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
   };
 
   return (
-    <div>
-      <table className="table table-bordered rounded-3 table-responsive">
+    <div className="outer-container">
+      <table className="table table-bordered table-responsive">
         <thead>
           <tr>
-            <th>r.Br</th>
-            <th>Naziv usluga</th>
-            <th>Obim usluga(kol.)</th>
-            <th>Cena</th>
-            <th>Vrednost</th>
-            <th>Rabat</th>
-            <th>Ukupno</th>
-            <th>Akcija</th>
+            <th className="tHeader">r.Br</th>
+            <th className="tHeader">Naziv usluga</th>
+            <th className="tHeader">Obim usluga(kol.)</th>
+            <th className="tHeader">Cena</th>
+            <th className="tHeader">Vrednost</th>
+            <th className="tHeader">Rabat</th>
+            <th className="tHeader">Ukupno</th>
+            <th className="tHeader">Akcija</th>
           </tr>
           <tr>
-            <th>-</th>
-            <th>-</th>
-            <th>-</th>
-            <th>RSD</th>
-            <th>RSD</th>
-            <th>%</th>
-            <th>RSD</th>
+            <th className="tHeader">-</th>
+            <th className="tHeader">-</th>
+            <th className="tHeader">-</th>
+            <th className="tHeader">RSD</th>
+            <th className="tHeader">RSD</th>
+            <th className="tHeader">%</th>
+            <th className="tHeader">RSD</th>
             <th></th>
           </tr>
         </thead>
         <tbody>{renderTableRows()}</tbody>
       </table>
-      <Button style={{ marginTop: "10px" }} onClick={addRow}>
-        Dodaj stavku
-      </Button>
+      <div style={{ marginTop: "10px" }}>
+        <Button onClick={addRow}>Dodaj stavku</Button>
+      </div>
     </div>
   );
 };

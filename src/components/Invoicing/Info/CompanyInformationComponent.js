@@ -28,6 +28,7 @@ const CompanyInformationComponent = ({ companies, setCurrentCompany }) => {
                   showSearch
                   placeholder="Pronadjite firmu"
                   onSelect={handleCompanySelect}
+                  className={styles.select}
                 >
                   {companies.map((company, id) => (
                     <Select.Option key={id} value={company.name}>

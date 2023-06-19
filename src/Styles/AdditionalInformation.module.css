@@ -4,6 +4,9 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+.textArea {
+  width: 80%;
+}
 
 .side-by-side {
   display: flex;
@@ -38,4 +41,21 @@
 
 .flex-grow {
   flex-grow: 1;
+  margin-right: 6rem;
+}
+@media only screen and (max-width: 1366px) {
+  .form-label {
+    font-size: 12px;
+  }
+  .form-input {
+    font-size: 12px;
+    width: 150px;
+    
+  }
+  .form-container{
+    margin-left: -5vh;
+  }
+  .textArea{
+    margin-right: 1vh;
+  }
 }

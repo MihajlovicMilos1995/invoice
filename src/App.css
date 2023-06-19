@@ -3,8 +3,9 @@
 }
 
 .sidebar {
-  flex: 0 0 200px; /* Fixed width for the sidebar */
+  flex: 0 0 200px;
   padding: 20px;
+  height: 100vh;
 }
 
 .content {

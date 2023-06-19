@@ -3,6 +3,7 @@ import { Table, Button, Modal, Form, Input, message, Upload } from "antd";
 import axios from "axios";
 import { useForm } from "antd/es/form/Form";
 import { UploadOutlined } from "@ant-design/icons";
+import "../../Styles/Company.css";
 
 const Companies = () => {
   const [companies, setCompanies] = useState([]);
@@ -185,13 +186,20 @@ const Companies = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="container">
+      <div style={{ margin: "5px" }}>
         <h1>Firme</h1>
       </div>
       <div>
-        <Button onClick={handleAddition}>Dodaj firmu</Button>
-        <Table dataSource={companies} columns={columns} />
+        <Button style={{ margin: "5px" }} onClick={handleAddition}>
+          Dodaj firmu
+        </Button>
+        <Table
+          scroll={{ x: 400 }}
+          className="table"
+          dataSource={companies}
+          columns={columns}
+        />
       </div>
       <Modal
         title={editingCompany ? "Uredi firmu" : "Dodaj firmu"}
@@ -244,7 +252,7 @@ const Companies = () => {
               accept=".png,.jpg,.jpeg"
             >
               <Button style={{ width: "300px" }} icon={<UploadOutlined />}>
-                Click to Upload
+                Klikni da odaberes
               </Button>
             </Upload>
           </Form.Item>

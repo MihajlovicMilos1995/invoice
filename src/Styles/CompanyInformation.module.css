@@ -17,3 +17,25 @@
 .form-input {
   flex: 1;
 }
+.select {
+  width: 185px;
+}
+@media only screen and (max-width: 1366px) {
+  .form-label {
+    font-weight: 100;
+    font-size: 13px;
+    width: 100px;
+  }
+  .form-input {
+    flex: 1;
+    width: 110px;
+    margin-left: -15px;
+    font-size: 12px;
+  }
+  .select {
+    width: 155px;
+  }
+  .container {
+    margin-right: 7rem;
+  }
+}

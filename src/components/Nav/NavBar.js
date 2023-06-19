@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import SideNav, {
   Toggle,
   Nav,
@@ -12,11 +13,30 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../Styles/SideNav.css";
 
 const NavBar = () => {
+  const [showToggle, setShowToggle] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 1366) {
+        setShowToggle(false);
+      } else {
+        setShowToggle(true);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <SideNav
       id=".sidenav.expanded"
-      style={{ backgroundColor: "#0D6EFD" }}
+      style={{ backgroundColor: "#0D6EFD", position: "fixed" }}
       onSelect={(selected) => {
         if (selected === "home") {
           navigate("/");
@@ -27,9 +47,12 @@ const NavBar = () => {
         }
       }}
     >
-      <SideNav.Toggle />
+      {showToggle && <SideNav.Toggle />}
       <SideNav.Nav defaultSelected="home">
-        <NavItem eventKey="home">
+        <NavItem
+          eventKey="home"
+          style={{ marginTop: !showToggle ? "30px" : "" }}
+        >
           <NavIcon>
             <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
           </NavIcon>

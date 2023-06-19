@@ -28,6 +28,7 @@ const PartnerInformationComponent = ({ companies, setCurrentPartner }) => {
                   showSearch
                   placeholder="Pronadjite partnera"
                   onSelect={handlePartnerSelect}
+                  className={styles.select}
                 >
                   {companies.map((company, id) => (
                     <Select.Option key={id} value={company.name}>

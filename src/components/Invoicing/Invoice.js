@@ -122,15 +122,14 @@ const Invoice = () => {
             />
           </Col>
         </Row>
-
         <Row style={{ marginTop: "10px" }}>
-          <Col>
+          <Col md={5}>
             <InvoiceInformationComponent
               setInvoiceData={setInvoiceData}
               currentCompany={currentCompany}
             />
           </Col>
-          <Col xs={12} md={8} style={{ marginLeft: "auto" }}>
+          <Col md={7} className="invoiceTableCol" style={{ marginTop: "25px" }}>
             <InvoiceTableComponent
               setTotalValue={setTotalValue}
               setTableInformation={setTableInformation}

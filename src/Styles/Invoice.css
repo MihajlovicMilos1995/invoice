@@ -10,5 +10,13 @@
 
 .company-information-container,
 .partner-information-container {
-  flex-basis: 48%; /* Adjust the value as needed */
+  flex-basis: 48%;
+}
+@media only screen and (max-width: 1366px) {
+  .invoice-container {
+    margin-left: -7rem;
+  }
+  .invoiceTableCol{
+    margin-left: -6rem;
+  }
 }
