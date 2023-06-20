@@ -1,4 +1,4 @@
-.container {
+.invoiceContainer {
   display: flex;
   justify-content: space-between;
   max-width: 30rem;
@@ -32,7 +32,7 @@
 .date-input {
   width: 150px;
 }
-@media only screen and (max-width: 1366px) {
+/* @media only screen and (min-width: 1366px) {
   .form-label,
   .date-label {
     font-size: 12px;
@@ -43,5 +43,50 @@
   }
   .container {
     margin-left: -0.5rem;
+  }
+} */
+@media screen and (min-width: 1000px) and (max-width: 1199px) {
+  .form-label,
+  .date-label {
+    font-size: 12px;
+  }
+  .form-input,
+  .date-input {
+    font-size: 12px;
+  }
+  .invoiceContainer {
+    margin-left: 5rem;
+  }
+  .racun-information-container {
+    margin-right: 4rem;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .form-label,
+  .date-label {
+    font-size: 12px;
+  }
+  .form-input,
+  .date-input {
+    font-size: 12px;
+  }
+  .invoiceContainer {
+    margin-left: 5rem;
+  }
+  .racun-information-container {
+    margin-right: 3rem;
+  }
+}
+@media screen and (min-width: 1400px) and (max-width: 1599px) {
+  .form-label,
+  .date-label {
+    font-size: 12px;
+  }
+  .form-input,
+  .date-input {
+    font-size: 12px;
+  }
+  .racun-information-container {
+    margin-right: 3rem;
   }
 }

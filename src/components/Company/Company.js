@@ -186,7 +186,7 @@ const Companies = () => {
   };
 
   return (
-    <div className="container">
+    <div className="companyContainer">
       <div style={{ margin: "5px" }}>
         <h1>Firme</h1>
       </div>
@@ -196,7 +196,7 @@ const Companies = () => {
         </Button>
         <Table
           scroll={{ x: 400 }}
-          className="table"
+          className="tableCompany"
           dataSource={companies}
           columns={columns}
         />

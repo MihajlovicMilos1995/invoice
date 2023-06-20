@@ -1,6 +1,5 @@
 import { Input, Button } from "antd";
 import React, { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "../../../Styles/InvoiceTableComponent.css";
 
 const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
@@ -73,7 +72,7 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
   const renderTableRows = () => {
     return data.map((row, index) => (
       <tr key={row.id}>
-        <td className="tHeader">{index + 1}</td>
+        <td className="tRbHeader">{index + 1}</td>
         <td>
           <Input
             placeholder="Naziv usluge"
@@ -110,7 +109,7 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
         </td>
         <td>
           <Input
-            style={{ width: "50px" }}
+            className="rabat"
             onChange={(e) => handleInputChange(e.target.value, row.id, "rabat")}
           />
         </td>
@@ -127,6 +126,7 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
         <td>
           <Button
             onClick={() => deleteRow(row.id)}
+            className="akcija"
             disabled={data.length === 1}
           >
             Obrisi
@@ -151,27 +151,27 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
 
   return (
     <div className="outer-container">
-      <table className="table table-bordered table-responsive">
-        <thead>
+      <table className="table table-bordered  table-responsive">
+        <thead style={{ fontSize: "13px", fontWeight: "lighter" }}>
           <tr>
-            <th className="tHeader">r.Br</th>
-            <th className="tHeader">Naziv usluga</th>
-            <th className="tHeader">Obim usluga(kol.)</th>
-            <th className="tHeader">Cena</th>
-            <th className="tHeader">Vrednost</th>
-            <th className="tHeader">Rabat</th>
-            <th className="tHeader">Ukupno</th>
-            <th className="tHeader">Akcija</th>
+            <th className="tRbHeader">r.Br</th>
+            <th className="tNazivHeader">Naziv usluga</th>
+            <th className="tKolicinaHeader">Obim usluga(kol.)</th>
+            <th className="tCenaHeader">Cena</th>
+            <th className="tVrednostHeader">Vrednost</th>
+            <th className="tRabatHeader">Rabat</th>
+            <th className="tUkupnoHeader">Ukupno</th>
+            <th className="tAkcijaHeader">Akcija</th>
           </tr>
           <tr>
-            <th className="tHeader">-</th>
-            <th className="tHeader">-</th>
-            <th className="tHeader">-</th>
-            <th className="tHeader">RSD</th>
-            <th className="tHeader">RSD</th>
-            <th className="tHeader">%</th>
-            <th className="tHeader">RSD</th>
-            <th></th>
+            <th className="tRbHeader">-</th>
+            <th className="tNazivHeader">-</th>
+            <th className="tKolicinaHeader">-</th>
+            <th className="tCenaHeader">RSD</th>
+            <th className="tVrednostHeader">RSD</th>
+            <th className="tRabatHeader">%</th>
+            <th className="tUkupnoHeader">RSD</th>
+            <th className="tAkcijaHeader"></th>
           </tr>
         </thead>
         <tbody>{renderTableRows()}</tbody>

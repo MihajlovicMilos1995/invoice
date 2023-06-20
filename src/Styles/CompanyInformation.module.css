@@ -20,7 +20,7 @@
 .select {
   width: 185px;
 }
-@media only screen and (max-width: 1366px) {
+/* @media only screen and (min-width: 1366px) {
   .form-label {
     font-weight: 100;
     font-size: 13px;
@@ -37,5 +37,24 @@
   }
   .container {
     margin-right: 7rem;
+  }
+} */
+@media screen and (min-width: 1023px) and (max-width: 1365px) {
+  .form-label {
+    font-weight: 100;
+    font-size: 12px;
+    width: 100px;
+  }
+  .form-input {
+    flex: 1;
+    width: 120px;
+    margin-left: -15px;
+    font-size: 12px;
+  }
+  .select {
+    width: 110px;
+  }
+  .container {
+    width: 100%;
   }
 }

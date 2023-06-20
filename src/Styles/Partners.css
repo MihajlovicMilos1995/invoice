@@ -1,17 +1,17 @@
-.container {
+.partnerContainer {
   margin-left: -1rem;
 }
-.table {
+.tablePartners {
   margin-left: 3rem;
   margin-top: 1vh;
   width: 90rem;
 }
 
 @media only screen and (max-width: 1366px) {
-  .container {
+  .partnerContainer {
     margin-left: -10rem;
   }
-  .table {
+  .tablePartners {
     width: 70rem;
   }
 }

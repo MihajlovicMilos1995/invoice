@@ -12,11 +12,28 @@
 .partner-information-container {
   flex-basis: 48%;
 }
-@media only screen and (max-width: 1366px) {
+/* @media only screen and (min-width: 1366px) {
   .invoice-container {
     margin-left: -7rem;
   }
-  .invoiceTableCol{
+  .invoiceTableCol {
+    margin-left: -6rem;
+  }
+} */
+@media screen and (min-width: 1000px) and (max-width: 1199px) {
+  .invoice-container {
+    margin-left: -7rem;
+  }
+  .invoiceTableCol {
+    margin-left: -6rem;
+    display: block;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .invoice-container {
+    margin-left: -7rem;
+  }
+  .invoiceTableCol {
     margin-left: -6rem;
   }
 }

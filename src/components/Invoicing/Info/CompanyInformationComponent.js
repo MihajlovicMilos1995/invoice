@@ -55,7 +55,7 @@ const CompanyInformationComponent = ({ companies, setCurrentCompany }) => {
 
             <div className={styles["form-row"]}>
               <div className={styles["form-label"]}>Director:</div>
-              <div className="form-input">
+              <div className={styles["form-input"]}>
                 <Input disabled value={selectedCompany.director} />
               </div>
             </div>

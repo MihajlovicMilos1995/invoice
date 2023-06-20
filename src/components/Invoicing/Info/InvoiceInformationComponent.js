@@ -14,7 +14,7 @@ const InvoiceInformationComponent = ({ setInvoiceData, currentCompany }) => {
   };
 
   return (
-    <div className={style.container}>
+    <div className={style.invoiceContainer}>
       <div className={style["racun-information-container"]}>
         <Form layout="vertical">
           <div className={style["form-row"]}>

@@ -128,7 +128,7 @@ const Partners = () => {
 
   const body = { backgroundColor: "rgb(219, 61, 68)" };
   return (
-    <div className="container">
+    <div className="partnerContainer">
       <div style={{ margin: "5px" }}>
         <h1>Partneri</h1>
       </div>
@@ -137,7 +137,7 @@ const Partners = () => {
           Dodaj partnera
         </Button>
         <Table
-          className="table"
+          className="tablePartners"
           scroll={{ x: 400 }}
           dataSource={partners}
           columns={columns}

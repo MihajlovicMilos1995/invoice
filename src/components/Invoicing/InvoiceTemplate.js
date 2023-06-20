@@ -50,8 +50,16 @@ class InvoiceModal extends React.Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-5" style={{ marginTop: "20px" }}>
-                  <div className="d-flex align-items-center">
-                    <img src={company.logo} alt="Company Logo" />
+                  <div
+                    className="d-flex align-items-center"
+                    style={{ maxWidth: "100%" }}
+                  >
+                    <img
+                      src={company.logo}
+                      alt="Company Logo"
+                      style={{ maxWidth: "100%" }}
+                      className="img-fluid"
+                    />
                   </div>
                 </div>
                 <div className="col-md-7" style={{ marginTop: "15px" }}>

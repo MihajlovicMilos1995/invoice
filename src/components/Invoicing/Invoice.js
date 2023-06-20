@@ -109,27 +109,27 @@ const Invoice = () => {
         ref={invoiceRef}
       >
         <Row>
-          <Col span={6} style={{ width: "50%" }}>
+          <Col span={6}>
             <CompanyInformationComponent
               companies={companies}
               setCurrentCompany={setCurrentCompany}
             />
           </Col>
-          <Col span={6} style={{ width: "50%" }}>
+          <Col span={6}>
             <PartnerInformationComponent
               companies={partners}
               setCurrentPartner={setCurrentPartner}
             />
           </Col>
         </Row>
-        <Row style={{ marginTop: "10px" }}>
-          <Col md={5}>
+        <Row className="invoiceTableCol" style={{ marginTop: "10px" }}>
+          <Col xs={12} sm={12} md={12} lg={4}>
             <InvoiceInformationComponent
               setInvoiceData={setInvoiceData}
               currentCompany={currentCompany}
             />
           </Col>
-          <Col md={7} className="invoiceTableCol" style={{ marginTop: "25px" }}>
+          <Col xs={12} sm={12} md={12} lg={8} style={{ marginTop: "25px" }}>
             <InvoiceTableComponent
               setTotalValue={setTotalValue}
               setTableInformation={setTableInformation}

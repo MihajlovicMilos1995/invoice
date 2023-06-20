@@ -1,26 +1,48 @@
 .outer-container {
-  margin-right: 10rem;
-  margin-left: -10rem;
+  margin-left: -7.5rem;
+  width: 100%;
 }
 .tHeader {
-  width: 200px;
-}
-.kolicina {
-  width: 80px;
-}
-.cena {
-  width: 80px;
-}
-.vrednost {
-  width: 80px;
-}
-.ukupno {
   width: 150px;
 }
+.tRbHeader {
+  width: 20px;
+}
+.tNazivHeader {
+  width: 120px;
+}
+.tKolicinaHeader {
+  width: 40px;
+}
+.tCenaHeader {
+  width: 70px;
+}
+.tVrednostHeader {
+  width: 70px;
+}
+.tRabatHeader {
+  width: 40px;
+}
+.tUkupnoHeader {
+  width: 100px;
+}
+.tAkcijaHeader {
+  width: 100px;
+}
+.nazivUsluge,
+.kolicina,
+.cena,
+.vrednost,
+.ukupno,
+.rabat,
+.akcija {
+  width: 100%;
+  font-size: 10px;
+}
 
-@media only screen and (max-width: 1366px) {
+/* @media only screen and (min-width: 1366px) {
   .outer-container {
-    margin-left: -2rem;
+    margin-left: 2rem;
   }
   .nazivUsluge {
     width: 130px;
@@ -40,5 +62,125 @@
   }
   .tHeader {
     font-size: 12px;
+  }
+} */
+@media screen and (min-width: 1000px) and (max-width: 1199px) {
+  .outer-container {
+    margin-left: 10rem;
+  }
+  .nazivUsluge,
+  .kolicina,
+  .cena,
+  .vrednost,
+  .ukupno,
+  .rabat,
+  .akcija {
+    width: 100%;
+    font-size: 12px;
+  }
+  .tHeader,
+  .tAkcijaHeader,
+  .tCenaHeader,
+  .tKolicinaHeader,
+  .tNazivHeader,
+  .tRabatHeader,
+  .tRbHeader,
+  .tUkupnoHeader,
+  .tVrednostHeader {
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+  .outer-container {
+    margin-left: 0.5rem;
+  }
+  .nazivUsluge,
+  .kolicina,
+  .cena,
+  .vrednost,
+  .ukupno,
+  .rabat,
+  .akcija {
+    width: 100%;
+    font-size: 12px;
+  }
+  .tHeader,
+  .tAkcijaHeader,
+  .tCenaHeader,
+  .tKolicinaHeader,
+  .tNazivHeader,
+  .tRabatHeader,
+  .tRbHeader,
+  .tUkupnoHeader,
+  .tVrednostHeader {
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
+@media screen and (min-width: 1400px) and (max-width: 1599px) {
+  .outer-container {
+    margin-left: 0.5rem;
+  }
+  .tHeader {
+    font-size: 12px;
+  }
+  .tAkcijaHeader {
+    width: 60px;
+  }
+  .nazivUsluge,
+  .kolicina,
+  .cena,
+  .vrednost,
+  .ukupno,
+  .rabat,
+  .akcija {
+    width: 100%;
+    font-size: 12px;
+  }
+  .tHeader,
+  .tAkcijaHeader,
+  .tCenaHeader,
+  .tKolicinaHeader,
+  .tNazivHeader,
+  .tRabatHeader,
+  .tRbHeader,
+  .tUkupnoHeader,
+  .tVrednostHeader {
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1800px) {
+  .outer-container {
+    margin-left: 0.5rem;
+  }
+  .tHeader {
+    font-size: 12px;
+  }
+  .tAkcijaHeader {
+    width: 60px;
+  }
+  .nazivUsluge,
+  .kolicina,
+  .cena,
+  .vrednost,
+  .ukupno,
+  .rabat,
+  .akcija {
+    width: 100%;
+    font-size: 12px;
+  }
+  .tHeader,
+  .tAkcijaHeader,
+  .tCenaHeader,
+  .tKolicinaHeader,
+  .tNazivHeader,
+  .tRabatHeader,
+  .tRbHeader,
+  .tUkupnoHeader,
+  .tVrednostHeader {
+    font-size: 12px;
+    font-weight: 500;
   }
 }

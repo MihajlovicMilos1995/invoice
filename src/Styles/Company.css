@@ -1,17 +1,17 @@
-.container {
+.companyContainer {
   margin-left: -1rem;
 }
-.table {
+.tableCompany {
   margin-left: 3rem;
   margin-top: 1vh;
   width: 90rem;
 }
 
 @media only screen and (max-width: 1366px) {
-  .container {
+  .companyContainer {
     margin-left: -10rem;
   }
-  .table {
+  .tableCompany {
     width: 70rem;
   }
 }
