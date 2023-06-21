@@ -92,6 +92,11 @@ const Companies = () => {
       key: "city",
     },
     {
+      title: "Sifra delatnosti",
+      dataIndex: "sifra_delatnosti",
+      key: "sifra_delatnosti",
+    },
+    {
       title: "Tekući račun",
       dataIndex: "tekuci_racun",
       key: "tekuci_racun",
@@ -400,6 +405,9 @@ const Companies = () => {
             <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="MB" name="mb">
+            <Input style={{ width: "300px" }} />
+          </Form.Item>
+          <Form.Item label="Sifra delatnosti" name="sifra_delatnosti">
             <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Email" name="email">

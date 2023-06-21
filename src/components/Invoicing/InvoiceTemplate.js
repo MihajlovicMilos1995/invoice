@@ -444,7 +444,10 @@ class InvoiceModal extends React.Component {
                           Avansno:
                         </td>
                         <td className="text-end" style={{ width: "120px" }}>
-                          {additionalInformationProps.uplacenoAvansno.toFixed(2)} RSD
+                          {parseFloat(
+                            additionalInformationProps.uplacenoAvansno
+                          ).toFixed(2)}
+                          RSD
                         </td>
                       </tr>
                     )}

@@ -147,10 +147,10 @@ const AdditionalInformationComponent = ({
 
   const handleUplacenoAvansnoChange = (e) => {
     const value = e.target.value;
-    setUplacenoAvansno(parseFloat(value));
+    setUplacenoAvansno(value);
     setAdditionalInformationProps((prevState) => ({
       ...prevState,
-      uplacenoAvansno: parseFloat(value),
+      uplacenoAvansno: value,
     }));
   };
   const handleNoteChange = (e) => {
@@ -202,7 +202,6 @@ const AdditionalInformationComponent = ({
                   className={`${styles["form-input"]} ${styles["fixed-width"]}`}
                 >
                   <Input
-                    value={uplacenoAvansno}
                     onChange={handleUplacenoAvansnoChange}
                     placeholder="00.00"
                     addonAfter="RSD"
