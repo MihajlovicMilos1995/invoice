@@ -147,10 +147,10 @@ const AdditionalInformationComponent = ({
 
   const handleUplacenoAvansnoChange = (e) => {
     const value = e.target.value;
-    setUplacenoAvansno(value);
+    setUplacenoAvansno(parseFloat(value));
     setAdditionalInformationProps((prevState) => ({
       ...prevState,
-      uplacenoAvansno: value,
+      uplacenoAvansno: parseFloat(value),
     }));
   };
   const handleNoteChange = (e) => {
@@ -204,6 +204,7 @@ const AdditionalInformationComponent = ({
                   <Input
                     value={uplacenoAvansno}
                     onChange={handleUplacenoAvansnoChange}
+                    placeholder="00.00"
                     addonAfter="RSD"
                   />
                 </div>
@@ -211,7 +212,7 @@ const AdditionalInformationComponent = ({
               <div className={styles["form-row"]}>
                 <div className={styles["form-label"]}>Razlika za uplatu:</div>
                 <div className={styles["form-input"]}>
-                  <Input value={razlikaZaUplatu} addonAfter="RSD" />
+                  <Input value={razlikaZaUplatu.toFixed(2)} addonAfter="RSD" />
                 </div>
               </div>
             </Form>

@@ -1,15 +1,31 @@
 .companyContainer {
-  margin-left: -1rem;
+  margin-left: 0rem;
 }
 .tableCompany {
-  margin-left: 3rem;
+  margin-left: 0rem;
   margin-top: 1vh;
   width: 90rem;
 }
 
-@media only screen and (max-width: 1366px) {
+@media screen and (min-width: 1000px) and (max-width: 1199px) {
   .companyContainer {
-    margin-left: -10rem;
+    margin-left: -8rem;
+  }
+  .tableCompany {
+    width: 70rem;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+  .companyContainer {
+    margin-left: -8rem;
+  }
+  .tableCompany {
+    width: 70rem;
+  }
+}
+@media screen and (min-width: 1400px) and (max-width: 1600px) {
+  .companyContainer {
+    margin-left: -8rem;
   }
   .tableCompany {
     width: 70rem;

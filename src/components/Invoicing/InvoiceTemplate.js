@@ -437,14 +437,14 @@ class InvoiceModal extends React.Component {
                         </td>
                       </tr>
                     )}
-                    {additionalInformationProps.uplacenoAvansno !== 0.0 && (
+                    {additionalInformationProps.uplacenoAvansno !== "" && (
                       <tr className="text-end">
                         <td></td>
                         <td className="fw-bold" style={{ width: "100px" }}>
                           Avansno:
                         </td>
                         <td className="text-end" style={{ width: "120px" }}>
-                          {additionalInformationProps.uplacenoAvansno} RSD
+                          {additionalInformationProps.uplacenoAvansno.toFixed(2)} RSD
                         </td>
                       </tr>
                     )}

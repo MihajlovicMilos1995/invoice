@@ -1,15 +1,31 @@
 .partnerContainer {
-  margin-left: -1rem;
+  margin-left: 0rem;
 }
 .tablePartners {
-  margin-left: 3rem;
+  margin-left: 0rem;
   margin-top: 1vh;
   width: 90rem;
 }
 
-@media only screen and (max-width: 1366px) {
+@media screen and (min-width: 1000px) and (max-width: 1199px) {
   .partnerContainer {
-    margin-left: -10rem;
+    margin-left: -8rem;
+  }
+  .tablePartners {
+    width: 70rem;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+  .partnerContainer {
+    margin-left: -8rem;
+  }
+  .tablePartners {
+    width: 70rem;
+  }
+}
+@media screen and (min-width: 1400px) and (max-width: 1600px) {
+  .partnerContainer {
+    margin-left: -8rem;
   }
   .tablePartners {
     width: 70rem;

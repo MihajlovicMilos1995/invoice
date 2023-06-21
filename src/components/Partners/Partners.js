@@ -84,6 +84,11 @@ const Partners = () => {
       key: "address",
     },
     {
+      title: "Grad",
+      dataIndex: "city",
+      key: "city",
+    },
+    {
       title: "Tekući račun",
       dataIndex: "tekuci_racun",
       key: "tekuci_racun",
@@ -233,6 +238,9 @@ const Partners = () => {
             <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Adresa" name="address">
+            <Input style={{ width: "300px" }} />
+          </Form.Item>
+          <Form.Item label="Grad" name="city">
             <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Tekući račun" name="tekuci_racun">
