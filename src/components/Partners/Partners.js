@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Modal, Form, Input, message } from "antd";
 import axios from "axios";
 import { useForm } from "antd/es/form/Form";
-import "../../Styles/TableStyles.css";
+import "../../Styles/Partners.css";
 
 const Partners = () => {
   const [partners, setPartners] = useState([]);
@@ -47,13 +47,64 @@ const Partners = () => {
     },
   };
 
-  const columns = Object.keys(partners[0]).map((key) => ({
-    title: key.toUpperCase(),
-    dataIndex: key,
-    key: key,
-  }));
-
-  columns.push(actionCol);
+  const columns = [
+    {
+      title: "Ime",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Direktor",
+      dataIndex: "director",
+      key: "director",
+    },
+    {
+      title: "PIB",
+      dataIndex: "pib",
+      key: "pib",
+    },
+    {
+      title: "MB",
+      dataIndex: "mb",
+      key: "mb",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    },
+    {
+      title: "Telefon",
+      dataIndex: "phone",
+      key: "phone",
+    },
+    {
+      title: "Adresa",
+      dataIndex: "address",
+      key: "address",
+    },
+    {
+      title: "Tekući račun",
+      dataIndex: "tekuci_racun",
+      key: "tekuci_racun",
+    },
+    {
+      title: "Akcije",
+      dataIndex: "id",
+      render: (id, record) => {
+        return (
+          <>
+            <Button type="link" onClick={() => handleEdit(record)}>
+              Izmeni
+            </Button>
+            <Button type="link" onClick={() => handleDelete(id)}>
+              Obrisi
+            </Button>
+          </>
+        );
+      },
+    },
+  ];
 
   //edit
 
@@ -172,6 +223,9 @@ const Partners = () => {
           <Form.Item label="PIB" name="pib">
             <Input style={{ width: "300px" }} />
           </Form.Item>
+          <Form.Item label="MB" name="mb">
+            <Input style={{ width: "300px" }} />
+          </Form.Item>
           <Form.Item label="Email" name="email">
             <Input style={{ width: "300px" }} />
           </Form.Item>
@@ -179,9 +233,6 @@ const Partners = () => {
             <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Adresa" name="address">
-            <Input style={{ width: "300px" }} />
-          </Form.Item>
-          <Form.Item label="MB" name="mb">
             <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Tekući račun" name="tekuci_racun">

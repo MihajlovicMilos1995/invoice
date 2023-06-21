@@ -7,9 +7,6 @@ const InvoiceInformationComponent = ({ setInvoiceData, currentCompany }) => {
     setInvoiceData((prevData) => ({
       ...prevData,
       [name]: value,
-
-      mestoIzdavanjaRacuna: currentCompany.city,
-      mestoPrometaRacuna: currentCompany.city,
     }));
   };
 
@@ -69,7 +66,12 @@ const InvoiceInformationComponent = ({ setInvoiceData, currentCompany }) => {
           >
             <div className={style["date-label"]}>Mesto izdavanja racuna:</div>
             <div className={style["date-input"]}>
-              <Input value={currentCompany.city} />
+              <Input
+                placeholder={currentCompany.city}
+                onChange={(e) =>
+                  handleInputChange("mestoIzdavanjaRacuna", e.target.value)
+                }
+              />
             </div>
           </div>
           <div className={style["date-row"]} style={{ marginTop: "5px" }}>
@@ -91,7 +93,12 @@ const InvoiceInformationComponent = ({ setInvoiceData, currentCompany }) => {
           >
             <div className={style["date-label"]}>Mesto prometa racuna:</div>
             <div className={style["date-input"]}>
-              <Input value={currentCompany.city} />
+              <Input
+                placeholder={currentCompany.city}
+                onChange={(e) =>
+                  handleInputChange("mestoPrometaRacuna", e.target.value)
+                }
+              />
             </div>
           </div>
         </Form>

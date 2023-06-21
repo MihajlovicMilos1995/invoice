@@ -10,6 +10,7 @@ const Companies = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingCompany, setEditingCompany] = useState(null);
   const [logoBase64, setLogoBase64] = useState(null);
+  const [potpisBase64, setPotpisBase64] = useState(null);
 
   const [form] = useForm();
 
@@ -49,13 +50,88 @@ const Companies = () => {
     },
   };
 
-  const columns = Object.keys(companies[0]).map((key) => ({
-    title: key.toUpperCase(),
-    dataIndex: key,
-    key: key,
-  }));
-
-  columns.push(actionCol);
+  const columns = [
+    {
+      title: "Ime",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Direktor",
+      dataIndex: "director",
+      key: "director",
+    },
+    {
+      title: "PIB",
+      dataIndex: "pib",
+      key: "pib",
+    },
+    {
+      title: "MB",
+      dataIndex: "mb",
+      key: "mb",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    },
+    {
+      title: "Telefon",
+      dataIndex: "phone",
+      key: "phone",
+    },
+    {
+      title: "Adresa",
+      dataIndex: "address",
+      key: "address",
+    },
+    {
+      title: "Tekući račun",
+      dataIndex: "tekuci_racun",
+      key: "tekuci_racun",
+    },
+    {
+      title: "Logo",
+      dataIndex: "logo",
+      key: "logo",
+      render: (logo) => (
+        <img
+          src={logo}
+          alt="Company Logo"
+          style={{ width: "50px", height: "50px" }}
+        />
+      ),
+    },
+    {
+      title: "Potpis",
+      dataIndex: "potpis",
+      key: "potpis",
+      render: (potpis) => (
+        <img
+          src={potpis}
+          alt="Potpis"
+          style={{ width: "100px", height: "50px" }}
+        />
+      ),
+    },
+    {
+      title: "Akcije",
+      dataIndex: "id",
+      render: (id, record) => {
+        return (
+          <>
+            <Button type="link" onClick={() => handleEdit(record)}>
+              Izmeni
+            </Button>
+            <Button type="link" onClick={() => handleDelete(id)}>
+              Obrisi
+            </Button>
+          </>
+        );
+      },
+    },
+  ];
 
   const handleEdit = (partner) => {
     setEditingCompany(partner);
@@ -109,7 +185,35 @@ const Companies = () => {
       reader.readAsDataURL(uploadedFile);
     }
   };
-
+  const handlePotpisUpload = (info) => {
+    const { fileList } = info;
+    if (fileList && fileList.length > 0) {
+      const uploadedFile = fileList[0].originFileObj;
+      setPotpisBase64(uploadedFile);
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64Data = reader.result;
+        const updatedFileList = fileList.map((file) => {
+          if (file.uid === uploadedFile.uid) {
+            return {
+              ...file,
+              originFileObj: base64Data,
+            };
+          }
+          return file;
+        });
+        form.setFieldsValue({
+          potpis: {
+            fileList: updatedFileList,
+            file: {
+              uid: uploadedFile.uid,
+            },
+          },
+        });
+      };
+      reader.readAsDataURL(uploadedFile);
+    }
+  };
   const handleModalOk = () => {
     form
       .validateFields()
@@ -126,11 +230,41 @@ const Companies = () => {
             reader.onload = () => {
               const base64Data = reader.result;
               updatedValues.logo = base64Data;
-              sendFormData(updatedValues);
+              if (
+                values.potpis &&
+                values.potpis.fileList &&
+                values.potpis.fileList.length > 0
+              ) {
+                const potpisFile = values.potpis.fileList[0].originFileObj;
+                const potpisReader = new FileReader();
+                potpisReader.onload = () => {
+                  const potpisBase64Data = potpisReader.result;
+                  updatedValues.potpis = potpisBase64Data;
+                  sendFormData(updatedValues);
+                };
+                potpisReader.readAsDataURL(potpisFile);
+              } else {
+                sendFormData(updatedValues);
+              }
             };
             reader.readAsDataURL(file);
           } else {
-            sendFormData(updatedValues);
+            if (
+              values.potpis &&
+              values.potpis.fileList &&
+              values.potpis.fileList.length > 0
+            ) {
+              const potpisFile = values.potpis.fileList[0].originFileObj;
+              const potpisReader = new FileReader();
+              potpisReader.onload = () => {
+                const potpisBase64Data = potpisReader.result;
+                values.potpis = potpisBase64Data;
+                sendFormData(values);
+              };
+              potpisReader.readAsDataURL(potpisFile);
+            } else {
+              sendFormData(values);
+            }
           }
         } else {
           if (
@@ -143,11 +277,41 @@ const Companies = () => {
             reader.onload = () => {
               const base64Data = reader.result;
               values.logo = base64Data;
-              sendFormData(values);
+              if (
+                values.potpis &&
+                values.potpis.fileList &&
+                values.potpis.fileList.length > 0
+              ) {
+                const potpisFile = values.potpis.fileList[0].originFileObj;
+                const potpisReader = new FileReader();
+                potpisReader.onload = () => {
+                  const potpisBase64Data = potpisReader.result;
+                  values.potpis = potpisBase64Data;
+                  sendFormData(values);
+                };
+                potpisReader.readAsDataURL(potpisFile);
+              } else {
+                sendFormData(values);
+              }
             };
             reader.readAsDataURL(file);
           } else {
-            sendFormData(values);
+            if (
+              values.potpis &&
+              values.potpis.fileList &&
+              values.potpis.fileList.length > 0
+            ) {
+              const potpisFile = values.potpis.fileList[0].originFileObj;
+              const potpisReader = new FileReader();
+              potpisReader.onload = () => {
+                const potpisBase64Data = potpisReader.result;
+                values.potpis = potpisBase64Data;
+                sendFormData(values);
+              };
+              potpisReader.readAsDataURL(potpisFile);
+            } else {
+              sendFormData(values);
+            }
           }
         }
       })
@@ -230,6 +394,9 @@ const Companies = () => {
           <Form.Item label="PIB" name="pib">
             <Input style={{ width: "300px" }} />
           </Form.Item>
+          <Form.Item label="MB" name="mb">
+            <Input style={{ width: "300px" }} />
+          </Form.Item>
           <Form.Item label="Email" name="email">
             <Input style={{ width: "300px" }} />
           </Form.Item>
@@ -237,9 +404,6 @@ const Companies = () => {
             <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Adresa" name="address">
-            <Input style={{ width: "300px" }} />
-          </Form.Item>
-          <Form.Item label="MB" name="mb">
             <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item label="Tekući račun" name="tekuci_racun">
@@ -256,6 +420,27 @@ const Companies = () => {
               </Button>
             </Upload>
           </Form.Item>
+          {editingCompany && (
+            <img src={editingCompany.logo} className="img-fluid" alt="Logo" />
+          )}
+          <Form.Item label="Potpis" name="potpis">
+            <Upload
+              beforeUpload={() => false}
+              onChange={(info) => handlePotpisUpload(info.file)}
+              accept=".png,.jpg,.jpeg"
+            >
+              <Button style={{ width: "300px" }} icon={<UploadOutlined />}>
+                Klikni da odaberes
+              </Button>
+            </Upload>
+          </Form.Item>
+          {editingCompany && (
+            <img
+              src={editingCompany.potpis}
+              className="img-fluid"
+              alt="Potpis"
+            />
+          )}
         </Form>
       </Modal>
     </div>

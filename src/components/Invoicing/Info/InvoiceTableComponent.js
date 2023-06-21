@@ -1,6 +1,7 @@
 import { Input, Button } from "antd";
 import React, { useState, useEffect } from "react";
 import "../../../Styles/InvoiceTableComponent.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
   const [data, setData] = useState([{ id: 0 }]);
@@ -15,7 +16,7 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
       kolicina: "",
       cena: "",
       vrednost: "",
-      rabat: "",
+      pdv: "",
       ukupno: "",
     };
 
@@ -47,16 +48,16 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
         if (
           fieldName === "kolicina" ||
           fieldName === "cena" ||
-          fieldName === "rabat"
+          fieldName === "porez"
         ) {
           const quantity = parseFloat(updatedRow.kolicina);
           const price = parseFloat(updatedRow.cena);
-          const discount = parseFloat(updatedRow.rabat || 0);
+          const tax = parseFloat(updatedRow.porez || 0);
 
-          if (!isNaN(quantity) && !isNaN(price) && !isNaN(discount)) {
+          if (!isNaN(quantity) && !isNaN(price) && !isNaN(tax)) {
             const value = quantity * price;
-            const discountedValue = value - (value * discount) / 100;
-            updatedRow.ukupno = discountedValue.toFixed(2);
+            const pdv = value + (value * tax) / 100;
+            updatedRow.ukupno = pdv.toFixed(2);
           } else {
             updatedRow.ukupno = "";
           }
@@ -110,7 +111,7 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
         <td>
           <Input
             className="rabat"
-            onChange={(e) => handleInputChange(e.target.value, row.id, "rabat")}
+            onChange={(e) => handleInputChange(e.target.value, row.id, "porez")}
           />
         </td>
         <td>
@@ -151,7 +152,7 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
 
   return (
     <div className="outer-container">
-      <table className="table table-bordered  table-responsive">
+      <table className="table table-bordered table-responsive">
         <thead style={{ fontSize: "13px", fontWeight: "lighter" }}>
           <tr>
             <th className="tRbHeader">r.Br</th>
@@ -159,7 +160,7 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
             <th className="tKolicinaHeader">Obim usluga(kol.)</th>
             <th className="tCenaHeader">Cena</th>
             <th className="tVrednostHeader">Vrednost</th>
-            <th className="tRabatHeader">Rabat</th>
+            <th className="tRabatHeader">PDV</th>
             <th className="tUkupnoHeader">Ukupno</th>
             <th className="tAkcijaHeader">Akcija</th>
           </tr>

@@ -37,6 +37,8 @@ class InvoiceModal extends React.Component {
     const tableInformation = invoiceInformation.tableInformation;
     const total = invoiceInformation.totalValue;
 
+    console.log(invoiceData);
+
     return (
       <div>
         <Modal
@@ -44,7 +46,6 @@ class InvoiceModal extends React.Component {
           onHide={this.props.onCancel}
           size="lg"
           centered
-          destroyOnClose
         >
           <div id="invoiceCapture">
             <div className="container">
@@ -185,18 +186,26 @@ class InvoiceModal extends React.Component {
                     <label style={{ marginRight: "5px", minWidth: "200px" }}>
                       Mesto prometa dobara i usluga:
                     </label>
-                    <span style={{ fontWeight: "bold" }}>
-                      {invoiceData.mestoPrometaRacuna}
-                    </span>
+                    {invoiceData.mestoPrometaRacuna ? (
+                      <span style={{ fontWeight: "bold" }}>
+                        {invoiceData.mestoPrometaRacuna}
+                      </span>
+                    ) : (
+                      <span style={{ fontWeight: "bold" }}>{company.city}</span>
+                    )}
                   </div>
 
                   <div style={{ marginBottom: "5px", display: "flex" }}>
                     <label style={{ marginRight: "5px", minWidth: "200px" }}>
                       Mesto izdavanja racuna:
                     </label>
-                    <span style={{ fontWeight: "bold" }}>
-                      {invoiceData.mestoIzdavanjaRacuna}
-                    </span>
+                    {invoiceData.mestoIzdavanjaRacuna ? (
+                      <span style={{ fontWeight: "bold" }}>
+                        {invoiceData.mestoIzdavanjaRacuna}
+                      </span>
+                    ) : (
+                      <span style={{ fontWeight: "bold" }}>{company.city}</span>
+                    )}
                   </div>
                 </Col>
                 <Col md={7} style={{ fontSize: "12px" }}>
@@ -264,7 +273,7 @@ class InvoiceModal extends React.Component {
                     <th>Kol.</th>
                     <th className="text-end">Cena(RSD)</th>
                     <th className="text-end">Vrednost(RSD)</th>
-                    <th className="text-end">Rabat(%)</th>
+                    <th className="text-end">PDV(%)</th>
                     <th className="text-end">Ukupno(RSD)</th>
                   </tr>
                 </thead>
@@ -282,7 +291,7 @@ class InvoiceModal extends React.Component {
                           {item.vrednost}
                         </td>
                         <td className="text-end" style={{ width: "100px" }}>
-                          {item.rabat || 0}
+                          {item.porez || 0}
                         </td>
                         <td className="text-end" style={{ width: "100px" }}>
                           {this.props.currency} {item.ukupno}
@@ -336,10 +345,12 @@ class InvoiceModal extends React.Component {
                           marginBottom: "-8px",
                         }}
                       >
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img
+                          src={company.potpis}
+                          className="img-fluid"
+                          alt="Potpis"
+                          style={{ width: "100px", height: "40px" }}
+                        />
                       </span>
                       <span
                         style={{
@@ -464,7 +475,7 @@ class InvoiceModal extends React.Component {
           <div className="pb-4 px-4">
             <Row>
               <Col md={6}>
-                <Button
+                {/* <Button
                   variant="primary"
                   className="d-block w-100"
                   onClick={GenerateInvoice}
@@ -474,7 +485,7 @@ class InvoiceModal extends React.Component {
                     className="me-2"
                   />
                   Send Invoice
-                </Button>
+                </Button> */}
               </Col>
               <Col md={6}>
                 <Button
