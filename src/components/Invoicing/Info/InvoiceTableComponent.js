@@ -57,6 +57,7 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
           if (!isNaN(quantity) && !isNaN(price) && !isNaN(tax)) {
             const value = quantity * price;
             const pdv = value + (value * tax) / 100;
+            updatedRow.vrednost = value.toFixed(2);
             updatedRow.ukupno = pdv.toFixed(2);
           } else {
             updatedRow.ukupno = "";
@@ -103,6 +104,7 @@ const InvoiceTableComponent = ({ setTotalValue, setTableInformation }) => {
           <Input
             className="vrednost"
             placeholder="Vrednost"
+            value={row.vrednost}
             onChange={(e) =>
               handleInputChange(e.target.value, row.id, "vrednost")
             }

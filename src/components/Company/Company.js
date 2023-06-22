@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Modal, Form, Input, message, Upload } from "antd";
 import axios from "axios";
 import { useForm } from "antd/es/form/Form";
-import { UploadOutlined } from "@ant-design/icons";
+import { SearchOutlined, UploadOutlined } from "@ant-design/icons";
 import "../../Styles/Company.css";
 
 const Companies = () => {
@@ -11,6 +11,11 @@ const Companies = () => {
   const [editingCompany, setEditingCompany] = useState(null);
   const [logoBase64, setLogoBase64] = useState(null);
   const [potpisBase64, setPotpisBase64] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
+
+  const filteredCompanies = companies.filter((company) =>
+    company.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   const [form] = useForm();
 
@@ -33,28 +38,20 @@ const Companies = () => {
     return <div>Loading...</div>;
   }
 
-  const actionCol = {
-    title: "Akcije",
-    dataIndex: "id",
-    render: (id, record) => {
-      return (
-        <>
-          <Button type="link" onClick={() => handleEdit(record)}>
-            Izmeni
-          </Button>
-          <Button type="link" onClick={() => handleDelete(id)}>
-            Obrisi
-          </Button>
-        </>
-      );
-    },
-  };
-
   const columns = [
     {
-      title: "Ime",
+      title: "Naziv",
       dataIndex: "name",
       key: "name",
+      width: "10%",
+      filterDropdown: () => (
+        <Input
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          prefix={<SearchOutlined />}
+          placeholder="Pretraga"
+        />
+      ),
     },
     {
       title: "Direktor",
@@ -371,7 +368,7 @@ const Companies = () => {
         <Table
           scroll={{ x: 400 }}
           className="tableCompany"
-          dataSource={companies}
+          dataSource={filteredCompanies}
           columns={columns}
         />
       </div>

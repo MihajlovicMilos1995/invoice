@@ -2,14 +2,20 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Modal, Form, Input, message } from "antd";
 import axios from "axios";
 import { useForm } from "antd/es/form/Form";
+import { SearchOutlined } from "@ant-design/icons";
 import "../../Styles/Partners.css";
 
 const Partners = () => {
   const [partners, setPartners] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingPartner, setEditingPartner] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
 
   const [form] = useForm();
+
+  const filteredPartners = partners.filter((partner) =>
+    partner.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   useEffect(() => {
     fetchPartners();
@@ -30,28 +36,20 @@ const Partners = () => {
     return <div>Loading...</div>;
   }
 
-  const actionCol = {
-    title: "Akcije",
-    dataIndex: "id",
-    render: (id, record) => {
-      return (
-        <>
-          <Button type="link" onClick={() => handleEdit(record)}>
-            Izmeni
-          </Button>
-          <Button type="link" onClick={() => handleDelete(id)}>
-            Obrisi
-          </Button>
-        </>
-      );
-    },
-  };
-
   const columns = [
     {
-      title: "Ime",
+      title: "Naziv",
       dataIndex: "name",
       key: "name",
+      width: "10%",
+      filterDropdown: () => (
+        <Input
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          prefix={<SearchOutlined />}
+          placeholder="Pretraga"
+        />
+      ),
     },
     {
       title: "Direktor",
@@ -200,7 +198,7 @@ const Partners = () => {
         <Table
           className="tablePartners"
           scroll={{ x: 400 }}
-          dataSource={partners}
+          dataSource={filteredPartners}
           columns={columns}
         />
       </div>

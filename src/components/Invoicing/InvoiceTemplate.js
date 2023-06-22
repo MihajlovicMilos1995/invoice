@@ -285,7 +285,7 @@ class InvoiceModal extends React.Component {
                         <td>{item.nazivUsluge}</td>
                         <td style={{ width: "70px" }}>{item.kolicina}</td>
                         <td className="text-end" style={{ width: "100px" }}>
-                          {item.cena}
+                          {parseFloat(item.cena).toFixed(2)}
                         </td>
                         <td className="text-end" style={{ width: "100px" }}>
                           {item.vrednost}
@@ -437,20 +437,23 @@ class InvoiceModal extends React.Component {
                         </td>
                       </tr>
                     )}
-                    {additionalInformationProps.uplacenoAvansno !== "" && (
-                      <tr className="text-end">
-                        <td></td>
-                        <td className="fw-bold" style={{ width: "100px" }}>
-                          Avansno:
-                        </td>
-                        <td className="text-end" style={{ width: "120px" }}>
-                          {parseFloat(
-                            additionalInformationProps.uplacenoAvansno
-                          ).toFixed(2)}
-                          RSD
-                        </td>
-                      </tr>
-                    )}
+                    {additionalInformationProps.uplacenoAvansno !== "" &&
+                      !isNaN(
+                        parseFloat(additionalInformationProps.uplacenoAvansno)
+                      ) && (
+                        <tr className="text-end">
+                          <td></td>
+                          <td className="fw-bold" style={{ width: "100px" }}>
+                            Avansno:
+                          </td>
+                          <td className="text-end" style={{ width: "120px" }}>
+                            {parseFloat(
+                              additionalInformationProps.uplacenoAvansno
+                            ).toFixed(2)}
+                            RSD
+                          </td>
+                        </tr>
+                      )}
                     <tr className="text-end">
                       <td>
                         <td></td>
@@ -500,7 +503,7 @@ class InvoiceModal extends React.Component {
                     style={{ width: "16px", height: "16px", marginTop: "-3px" }}
                     className="me-2"
                   />
-                  Download Copy
+                  Preuzmi
                 </Button>
               </Col>
             </Row>
